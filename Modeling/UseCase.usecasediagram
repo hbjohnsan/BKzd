@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="1bc5f7c1-7c1e-4f5b-ab82-3c7cbcb189f7" name="UseCase" linkedPackageId="10830257-0a9f-49b5-b3ab-df69ca2113f7" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="c48c6421-0ae2-4400-8f22-f16da4820376" name="办公室主任" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1dc8acca-b6d1-413e-b32a-dc1cf62b0989" />
+        <targetEnds>
+          <association Id="f3887ae9-47e9-4a04-ba82-da174b02357e" isDerived="false" sourceEndRoleName="办公室主任" targetEndRoleName="根据上级分配任务制订新年度报刊征订计谋" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="bdeb2015-5a88-4a19-8a1f-52fb1588e5ec" LastKnownName="根据上级分配任务制订新年度报刊征订计划" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="40e6b2c2-e603-456a-8f74-ec9c1df5150b" name="办公室主任" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="812dfd6a-8ad5-4556-b0a5-bb412e64a8f0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b6c8b595-3f14-40a5-85a3-26a548b68eb8" name="根据上级分配任务制订新年度报刊征订计谋" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d4f2cbcf-2911-42d9-86b0-75bb636a15df" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="84bfc476-c0e2-4e47-890e-480b5ffc2af1" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bdeb2015-5a88-4a19-8a1f-52fb1588e5ec" name="根据上级分配任务制订新年度报刊征订计划" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5304da6-22a4-44a7-a7a1-8551500fe188" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="3f70ebc7-6b04-415b-81f0-0819df929aeb" name="收款人" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="164bc97d-a332-4d76-b304-8e8e81a5a3f0" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="944aa40c-ac30-4802-a1b2-d56bf8017a2e" name="邮局开发票" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a5836d56-1e34-4141-acfd-a6697f35976f" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="e4257a56-aa6a-46f1-b619-cec8998a05ff" name="各局交款人" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="932b8a67-d013-4b78-9f9d-3cb109544683" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="3132c38c-ed80-430c-971e-248b8da2d076" name="领导查看进度" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4c566433-b5c3-4a6a-92f9-4600a221c503" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="f519a3a9-e395-4d48-a337-c7ceb2908fa4" name="个人用户修改地址" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6b43c518-2810-4cc4-873d-57fd9ed63a12" />
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="10830257-0a9f-49b5-b3ab-df69ca2113f7" name="Modeling">
+    <elementDefinition Id="d47d49cf-1960-4610-bddf-1f920efa2584" />
+    <profileInstances>
+      <packageHasProfileInstances Id="e74c26cf-a155-4c22-b922-c55be3c78a20">
+        <profileInstance Id="92aadcfc-b89c-4273-9ccd-506fb899c156" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a67d39be-e50c-4157-81ad-5540016dd3a7">
+        <profileInstance Id="0ee7b88d-5768-4857-91aa-73217a26e027" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

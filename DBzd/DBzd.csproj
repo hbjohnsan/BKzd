@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69FE94F4-1402-4A5F-89A3-E67C8E803B30}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBzd</RootNamespace>
+    <AssemblyName>DBzd</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DBzd.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExtendedRichTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ExtendedRichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.98.1\lib\net40\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.98.1\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.98.1\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\..\MySQLYQ\YQmysql\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BankFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankFrm.Designer.cs">
+      <DependentUpon>BankFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BKDataSet.cs">
+      <DependentUpon>BKDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BKDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BKDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CountFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountFrm.Designer.cs">
+      <DependentUpon>CountFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditNewTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditNewTask.Designer.cs">
+      <DependentUpon>EditNewTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeesFrm.Designer.cs">
+      <DependentUpon>FeesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IOUFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IOUFrm.Designer.cs">
+      <DependentUpon>IOUFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoneyCountFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoneyCountFrm.Designer.cs">
+      <DependentUpon>MoneyCountFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaperEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaperEdit.Designer.cs">
+      <DependentUpon>PaperEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaperInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaperInsert.Designer.cs">
+      <DependentUpon>PaperInsert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myClass.cs" />
+    <Compile Include="PaperFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaperFrm.Designer.cs">
+      <DependentUpon>PaperFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsPaperNum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolsPaperNum.Designer.cs">
+      <DependentUpon>ToolsPaperNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PeopleAddFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeopleAddFrm.Designer.cs">
+      <DependentUpon>PeopleAddFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PeopleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeopleFrm.Designer.cs">
+      <DependentUpon>PeopleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PinYin.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceivablesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceivablesFrm.Designer.cs">
+      <DependentUpon>ReceivablesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReplyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReplyFrm.Designer.cs">
+      <DependentUpon>ReplyFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextBoxPrintCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RMBCapitalization.cs" />
+    <Compile Include="UnitEidtFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitEidtFrm.Designer.cs">
+      <DependentUpon>UnitEidtFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitFrm.Designer.cs">
+      <DependentUpon>UnitFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitInsertFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitInsertFrm.Designer.cs">
+      <DependentUpon>UnitInsertFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitPostEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitPostEdit.Designer.cs">
+      <DependentUpon>UnitPostEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitPostInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitPostInsert.Designer.cs">
+      <DependentUpon>UnitPostInsert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskFrm.Designer.cs">
+      <DependentUpon>TaskFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitTaskInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitTaskInsert.Designer.cs">
+      <DependentUpon>UnitTaskInsert.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BankFrm.resx">
+      <DependentUpon>BankFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountFrm.resx">
+      <DependentUpon>CountFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditNewTask.resx">
+      <DependentUpon>EditNewTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeesFrm.resx">
+      <DependentUpon>FeesFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IOUFrm.resx">
+      <DependentUpon>IOUFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoneyCountFrm.resx">
+      <DependentUpon>MoneyCountFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaperEdit.resx">
+      <DependentUpon>PaperEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaperInsert.resx">
+      <DependentUpon>PaperInsert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaperFrm.resx">
+      <DependentUpon>PaperFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolsPaperNum.resx">
+      <DependentUpon>ToolsPaperNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeopleAddFrm.resx">
+      <DependentUpon>PeopleAddFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeopleFrm.resx">
+      <DependentUpon>PeopleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReceivablesFrm.resx">
+      <DependentUpon>ReceivablesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReplyFrm.resx">
+      <DependentUpon>ReplyFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitEidtFrm.resx">
+      <DependentUpon>UnitEidtFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitFrm.resx">
+      <DependentUpon>UnitFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitInsertFrm.resx">
+      <DependentUpon>UnitInsertFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitPostEdit.resx">
+      <DependentUpon>UnitPostEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitPostInsert.resx">
+      <DependentUpon>UnitPostInsert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskFrm.resx">
+      <DependentUpon>TaskFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitTaskInsert.resx">
+      <DependentUpon>UnitTaskInsert.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="BKDataSet.xsc">
+      <DependentUpon>BKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BKDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BKDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BKDataSet.xss">
+      <DependentUpon>BKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Data\baokan.db" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-2-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Action-remove-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-validated-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\post-office-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Office-Customer-Male-Light-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-print-direct-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-print-preview-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Font-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-left-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-center-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-right-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-justity-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-underline-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-bold-icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

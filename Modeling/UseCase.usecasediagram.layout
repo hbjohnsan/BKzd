@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UseCase">
+  <useCaseModelRootMoniker Id="1bc5f7c1-7c1e-4f5b-ab82-3c7cbcb189f7" />
+  <nestedChildShapes>
+    <actorShape Id="8d5295aa-6870-40d4-99b0-cdfe472a69c5" absoluteBounds="2.125, 0.75, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="c48c6421-0ae2-4400-8f22-f16da4820376" LastKnownName="办公室主任" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="8bc84ccc-d668-4413-9844-3388ec6a3452" absoluteBounds="3.375, 1.625, 1.5, 0.75" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="bdeb2015-5a88-4a19-8a1f-52fb1588e5ec" LastKnownName="根据上级分配任务制订新年度报刊征订计划" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(2.625 : 1.14285714285714); (3.63112154409861 : 1.71778373948492)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="f3887ae9-47e9-4a04-ba82-da174b02357e" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="8d5295aa-6870-40d4-99b0-cdfe472a69c5" />
+        <useCaseShapeMoniker Id="8bc84ccc-d668-4413-9844-3388ec6a3452" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <actorShape Id="666efcf7-5ca8-4df8-bce1-9d47b79d8242" absoluteBounds="2.25, 2.5, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="3f70ebc7-6b04-415b-81f0-0819df929aeb" LastKnownName="收款人" />
+      <relativeChildShapes />
+    </actorShape>
+    <actorShape Id="e72d663a-a2de-407d-a41c-43a761d46f98" absoluteBounds="5, 0.75, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="944aa40c-ac30-4802-a1b2-d56bf8017a2e" LastKnownName="邮局开发票" />
+      <relativeChildShapes />
+    </actorShape>
+    <actorShape Id="ad113be5-0c9c-48ef-9eb4-f504ac4e66bd" absoluteBounds="6.75, 1.625, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="e4257a56-aa6a-46f1-b619-cec8998a05ff" LastKnownName="各局交款人" />
+      <relativeChildShapes />
+    </actorShape>
+    <actorShape Id="f3fd2491-3b2b-4782-ad59-100d8591ea7e" absoluteBounds="6.25, 2.625, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="3132c38c-ed80-430c-971e-248b8da2d076" LastKnownName="领导查看进度" />
+      <relativeChildShapes />
+    </actorShape>
+    <actorShape Id="4486bf66-9811-45af-8962-4477604958fa" absoluteBounds="4, 2.75, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="f519a3a9-e395-4d48-a337-c7ceb2908fa4" LastKnownName="个人用户修改地址" />
+      <relativeChildShapes />
+    </actorShape>
+  </nestedChildShapes>
+</useCaseDiagram>
