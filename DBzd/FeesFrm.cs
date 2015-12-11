@@ -115,9 +115,14 @@ namespace DBzd
             {
 
 
-                ListViewItem lv = new ListViewItem(new string[] { i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
+                ListViewItem lv = new ListViewItem(new string[] {"", i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
                 listView1.Items.Add(lv); ;
 
+            }
+            //显示序号
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
             }
         }
         //现金
@@ -143,9 +148,14 @@ namespace DBzd
             {
 
 
-                ListViewItem lv = new ListViewItem(new string[] { i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
+                ListViewItem lv = new ListViewItem(new string[] {"", i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
                 listView1.Items.Add(lv); ;
 
+            }
+            //显示序号
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
             }
         }
 
@@ -165,7 +175,7 @@ namespace DBzd
 
             mf.toolStripStatusLabel1.Text += "    未交：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='未交' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 
-
+            mf.toolStripStatusLabel2.Text += "合计各类总额:" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
         }
 
 

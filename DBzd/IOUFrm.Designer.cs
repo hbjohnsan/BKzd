@@ -63,7 +63,6 @@
             this.txtTruePrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label5 = new System.Windows.Forms.Label();
             this.rtbDoc = new ExtendedRichTextBox.RichTextBoxPrintCtrl();
@@ -355,16 +354,6 @@
             this.txtName.Size = new System.Drawing.Size(123, 21);
             this.txtName.TabIndex = 7;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(456, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -375,7 +364,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.txtName);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.txtTruePrice);
@@ -474,7 +462,6 @@
         private System.Windows.Forms.TextBox txtTruePrice;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PrintDialog printDialog2;
         private ExtendedRichTextBox.RichTextBoxPrintCtrl rtbDoc;

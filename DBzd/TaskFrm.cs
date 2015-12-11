@@ -238,26 +238,36 @@ namespace DBzd
             {
                 listViewUnit.SelectedItems[0].BackColor = Color.Red;
                 #region 显示报刊数量
-                //  Unit u = listViewUnit.SelectedItems[0].Tag as Unit;
                 string unitid = listViewUnit.SelectedItems[0].Tag.ToString();
-
                 string year = tscombYear.SelectedItem.ToString().Trim();
-                BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == unitid select p).SingleOrDefault();
-                labUnitID.Text = unitid;
-                labUnit.Text = mf.DS.Unit.FindByUnitID(unitid).ShortName;
-                nUD101.Value = pr.P101;
-                nUD102.Value = pr.P102;
-                nUD103.Value = pr.P103;
-                nUD104.Value = pr.P104;
-                nUD105.Value = pr.P105;
-                nUD201.Value = pr.P201;
-                nUD202.Value = pr.P202;
-                nUD203.Value = pr.P203;
-                nUD301.Value = pr.P301;
-                nUD302.Value = pr.P302;
-                txtComnyMoney.Text = pr.ComnyMoney.ToString();
-                txtPaperMoney.Text = pr.BaseMoney.ToString();
-                labTotalMoney.Text = pr.TotalMoney.ToString();
+                //判断该单位是不是已经分配了任务，如果是从复制上年度的规则中分配的，那么就显示如下，如果不是，那么所有报刊数据应为0
+                if (mf.DS.PaperTask.Select("Year='" + year + "' and UnitID='" + unitid + "'").Count() > 0)
+                {
+                    BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == unitid select p).SingleOrDefault();
+                    labUnitID.Text = unitid;
+                    labUnit.Text = mf.DS.Unit.FindByUnitID(unitid).ShortName;
+                    nUD101.Value = pr.P101;
+                    nUD102.Value = pr.P102;
+                    nUD103.Value = pr.P103;
+                    nUD104.Value = pr.P104;
+                    nUD105.Value = pr.P105;
+                    nUD201.Value = pr.P201;
+                    nUD202.Value = pr.P202;
+                    nUD203.Value = pr.P203;
+                    nUD301.Value = pr.P301;
+                    nUD302.Value = pr.P302;
+                    txtComnyMoney.Text = pr.ComnyMoney.ToString();
+                    txtPaperMoney.Text = pr.BaseMoney.ToString();
+                    labTotalMoney.Text = pr.TotalMoney.ToString();
+                }
+                else
+                {
+                    labUnitID.Text = unitid;
+                    labUnit.Text = mf.DS.Unit.FindByUnitID(unitid).ShortName;
+                    nUD101.Value = nUD102.Value = nUD103.Value = nUD104.Value = nUD105.Value = nUD201.Value = nUD202.Value = nUD203.Value = nUD301.Value = nUD302.Value = 0;
+                    txtComnyMoney.Text = txtPaperMoney.Text = labTotalMoney.Text = "0";
+                }
+
 
                 #endregion
 
@@ -428,25 +438,47 @@ namespace DBzd
         //todo:编辑
         private void btnEditTask_Click(object sender, EventArgs e)
         {
+            string unitid = listViewUnit.SelectedItems[0].Tag.ToString();
             string year = tscombYear.SelectedItem.ToString().Trim();
-            BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
-            pr.P101 = Convert.ToInt32(nUD101.Value);
-            pr.P102 = Convert.ToInt32(nUD102.Value);
-            pr.P103 = Convert.ToInt32(nUD103.Value);
-            pr.P104 = Convert.ToInt32(nUD104.Value);
-            pr.P105 = Convert.ToInt32(nUD105.Value);
-            pr.P201 = Convert.ToInt32(nUD201.Value);
-            pr.P202 = Convert.ToInt32(nUD202.Value);
-            pr.P203 = Convert.ToInt32(nUD203.Value);
-            pr.P301 = Convert.ToInt32(nUD301.Value);
-            pr.P302 = Convert.ToInt32(nUD302.Value);
-            pr.ComnyMoney = Convert.ToDouble(txtComnyMoney.Text.Trim());
-            pr.BaseMoney = Convert.ToDouble(txtPaperMoney.Text);
-            pr.TotalMoney = Convert.ToDouble(labTotalMoney.Text);
-            mf.paperTaskTap.Update(pr);
-            //mf.DS.Paper.Dispose();
-            //mf.paperTap.Fill(mf.DS.Paper);
+            if (mf.DS.PaperTask.Select("Year='" + year + "' and UnitID='" + unitid + "'").Count() > 0)
+            {
+                BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
+                pr.P101 = Convert.ToInt32(nUD101.Value);
+                pr.P102 = Convert.ToInt32(nUD102.Value);
+                pr.P103 = Convert.ToInt32(nUD103.Value);
+                pr.P104 = Convert.ToInt32(nUD104.Value);
+                pr.P105 = Convert.ToInt32(nUD105.Value);
+                pr.P201 = Convert.ToInt32(nUD201.Value);
+                pr.P202 = Convert.ToInt32(nUD202.Value);
+                pr.P203 = Convert.ToInt32(nUD203.Value);
+                pr.P301 = Convert.ToInt32(nUD301.Value);
+                pr.P302 = Convert.ToInt32(nUD302.Value);
+                pr.ComnyMoney = Convert.ToDouble(txtComnyMoney.Text.Trim());
+                pr.BaseMoney = Convert.ToDouble(txtPaperMoney.Text);
+                pr.TotalMoney = Convert.ToDouble(labTotalMoney.Text);
+                mf.paperTaskTap.Update(pr);
+                //mf.DS.Paper.Dispose();
+                //mf.paperTap.Fill(mf.DS.Paper);
+            }
+            else//新增单位任务
+            {
 
+                mf.DS.PaperTask.AddPaperTaskRow(unitid, Convert.ToInt32(nUD101.Value), Convert.ToInt32(nUD102.Value),
+                    Convert.ToInt32(nUD103.Value),
+                    Convert.ToInt32(nUD104.Value),
+                    Convert.ToInt32(nUD105.Value),
+                    Convert.ToInt32(nUD201.Value),
+                    Convert.ToInt32(nUD202.Value),
+                    Convert.ToInt32(nUD203.Value),
+                    Convert.ToInt32(nUD301.Value),
+                    Convert.ToInt32(nUD302.Value),
+                    Convert.ToDouble(txtComnyMoney.Text.Trim()),
+                    Convert.ToDouble(txtPaperMoney.Text),
+                    Convert.ToDouble(labTotalMoney.Text), year);
+                mf.paperTaskTap.Update(mf.DS.PaperTask);
+                //mf.DS.Paper.Dispose();
+                //mf.paperTap.Fill(mf.DS.Paper);
+            }
 
 
         }
@@ -462,69 +494,69 @@ namespace DBzd
             var q = from p in mf.DS.Paper.AsEnumerable()
                     where p.Year == tscombYear.SelectedItem.ToString().Trim()//&& p.PaperID==pid
                     select p;
-           
+
             #region 循环
             foreach (var f in q)
             {
                 switch (f.PaperID)
                 {
                     case "101":
-                      
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD101.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD101.Value);
+
                         break;
                     case "102":
-                       
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD102.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD102.Value);
+
                         break;
                     case "103":
-                       
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD103.Value);
-                     
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD103.Value);
+
                         break;
                     case "104":
-                       
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD104.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD104.Value);
+
                         break;
                     case "105":
-                        
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD105.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD105.Value);
+
                         break;
 
                     case "201":
-                        
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD201.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD201.Value);
+
                         break;
                     case "202":
-                       
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD202.Value);
-                        
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD202.Value);
+
                         break;
                     case "203":
-                        
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD203.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD203.Value);
+
                         break;
                     case "301":
-                       
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD301.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD301.Value);
+
                         break;
                     case "302":
-                       
-                            tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD302.Value);
-                       
+
+                        tol += (f.Price - f.SubSidy) * Convert.ToDouble(nUD302.Value);
+
                         break;
 
                 }
             }
             #endregion
 
-            txtPaperMoney.Text = tol.ToString();           
+            txtPaperMoney.Text = tol.ToString();
             labTotalMoney.Text = (tol + Convert.ToDouble(txtComnyMoney.Text)).ToString("0.0");
 
         }
@@ -536,10 +568,10 @@ namespace DBzd
 
         private void txtPaperMoney_TextChanged(object sender, EventArgs e)
         {
-            labTotalMoney.Text =(Convert.ToDouble(txtPaperMoney.Text) + Convert.ToDouble(txtComnyMoney.Text)).ToString("0.0");
+            labTotalMoney.Text = (Convert.ToDouble(txtPaperMoney.Text) + Convert.ToDouble(txtComnyMoney.Text)).ToString("0.0");
         }
 
-     
+
 
     }
 }

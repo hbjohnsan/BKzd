@@ -145,6 +145,7 @@ namespace DBzd
             mf.DS.Unit.Dispose();
             mf.unitTap.Fill(mf.DS.Unit);
             mf.ReloadUnitFrmListView1();
+            //todo:到最后时出错。
             if (combcode.Items.Count > 0)
             {
                 combcode.SelectedIndex = combcode.SelectedIndex + 1;

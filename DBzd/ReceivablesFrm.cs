@@ -60,7 +60,7 @@ namespace DBzd
         {
             toolStripComboBox3.Items.Clear();
             var q1 = from k in mf.DS.Unit
-                     //  orderby k.kind descending
+                     orderby k.Kind descending
                      group k by k.Kind into g
                      select new
                      {
@@ -172,23 +172,16 @@ namespace DBzd
 
 
         }
+
         //选择单位变化时
-        //下拉列表关闭时
         private void combJKDW_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
-            btnSave.Enabled = txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
-            btnEidtUP.Visible = false;
-            txtbz.Text = "";
-            //清空交款记录
-            listView1.Items.Clear();
-            //清空交款人
-            combPeple.Items.Clear();
-
             Unit u = combJKDW.SelectedItem as Unit;
+            string unitID = u.UnitID;
+            string year = toolStripComboBox1.SelectedItem.ToString();
+            //如果该单位的交款状态为已经完成，那么相关按键需要禁止。否则应开启
             var q = from p in mf.DS.PaperTask.AsEnumerable()
-                    where p.Year == toolStripComboBox1.SelectedItem.ToString() && p.UnitId == u.UnitID
+                    where p.Year == year && p.UnitId == unitID
                     select p;
             foreach (var i in q)
             {
@@ -199,38 +192,53 @@ namespace DBzd
                 txtTruePrice.Text = txtTotalMoney.Text;
             }
 
-
-            //根据单位ID，自动加载单位分配的任务数量
-            LoadPaperTask();
-
-
-
-            //加载该单位以前的交款记录
-            if (mf.DS.Receivables.Select("UnitID='" + u.UnitID + "'").Count() > 0) //判断该单位是否已经交过款，是否完成了任务
+            //判断该单位是否已经完成了任务 IsOver='是' and 这个不有加了，因为有只交一部分的人
+            if (mf.DS.Receivables.Select("Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0)
             {
-                LoadHasPay();
+                var qi = from p in mf.DS.Receivables.AsEnumerable()
+                        where p.UnitID == unitID && p.Year == year
+                        select p;
+                foreach (var i in qi)
+                {
+                    if (i.IsOver == "是")
+                    {
+                        //显示已经完成
+                        rabYes.Checked = true;
+                        btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
+                    }
+                }
 
-            }
-            //判断该单位是否已经完成了任务
-            if (mf.DS.Receivables.Select("IsOver='是' and UnitID='" + u.UnitID + "'").Count() > 0)
-            {
-
-                btnSave.Enabled = txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
                 //从交款记录任务表中提取
-                LoadHasPayTask();
+                LoadHasPay();
+                //加载真实任务数
 
+            }
+            else
+            {
+                //未交款单位
+                radNOJiao.Checked = true;
+                //未完成状态
+                rabNo.Checked = true;
+
+                btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
+                btnEidtUP.Visible = false;
+                txtbz.Text = "";
+                //已交款总额清0
+                labhasTotal.Text = "0";
+                //清空交款记录
+                listView1.Items.Clear();
+               //根据单位ID，自动加载单位分配的任务数量
+                LoadPaperTask();
 
             }
 
-            //加载人员列表
-            LoadPeopleByUnitID();
-
-
+            
             //TotalHasPayMoney();
             //显示计算总额
             CalcHasPayUnit();
 
         }
+       
 
         //从交款记录任务表中提取
         private void LoadHasPayTask()
@@ -245,8 +253,8 @@ namespace DBzd
                 txtTruePrice.Text = i.TrueMoney.ToString();
             }
             txtHasMoeny.Text = txtTruePrice.Text;
-            //还需要加载，单位的实际刊数
 
+            //还需要加载，单位的实际刊数
             var q = from p in mf.DS.TruePaper.AsEnumerable()
                     where p.UnitID == u.UnitID
                     select p;
@@ -270,49 +278,45 @@ namespace DBzd
         {
             listView1.Items.Clear();
             double money = 0;
-            Unit u = new Unit();
-            u = combJKDW.SelectedItem as Unit;
+            Unit u = combJKDW.SelectedItem as Unit;
+            string year = toolStripComboBox1.SelectedItem.ToString();
 
             var q = from p in mf.DS.Receivables.AsEnumerable()
-                    from pe in mf.DS.People.AsEnumerable()
-                    where p.Year == toolStripComboBox1.SelectedItem.ToString() && pe.PeopleID == p.PayPeopleID && p.UnitID == u.UnitID
+                    where p.Year == year && p.UnitID == u.UnitID
+                    orderby p.PayTime descending
                     select new
                     {
                         id = p.ID,
                         kind = p.PayKind,
                         money = p.TrueMoney,
-                        name = pe.Name,
                         time = p.PayTime
                     };
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { i.kind, i.money.ToString(), i.name, i.time.ToShortDateString() });
+                ListViewItem lv = new ListViewItem(new string[] { i.kind, i.money.ToString(), i.time.ToShortDateString() });
                 money += i.money;
                 lv.Tag = i.id;
                 listView1.Items.Add(lv);
             }
-            label8.Text = "已交款总额：" + money.ToString();
-            //在已交过款的列表中找到人员ID，查人员
-
-            combPeple.Items.Clear();
-            var qe = from p in mf.DS.Receivables.AsEnumerable()
-                     from pe in mf.DS.People.AsEnumerable()
-                     where p.ID == Convert.ToInt32(listView1.Items[0].Tag.ToString()) && p.PayPeopleID == pe.PeopleID
-                     select new
-                     {
-                         pID = pe.PeopleID,
-                         pName = pe.Name,
-                         pPhone = pe.Phone
-                     };
-            foreach (var i in qe)
+            labhasTotal.Text = money.ToString();
+            switch (listView1.Items[0].Text)
             {
-                People p = new People();
-        //todo:        p.PeopleID = i.pID;
-                p.Name = i.pName;
-                p.Phone = i.pPhone;
-                combPeple.Items.Add(p);
+                case "现金":
+                    rabMoney.Checked = true;
+                    break;
+                case "汇卡":
+                    rabCard.Checked = true;
+                    break;
+                case "转账":
+                    rabRemit.Checked = true;
+                    break;
+                case "欠条":
+                    radIOU.Checked = true;
+                    break;
+
             }
-            combPeple.SelectedIndex = 0;
+            //如果该单位交过款了，对应显示相当的内容。
+            txtTruePrice.Text = labhasTotal.Text;
         }
 
         //单位的报刊任务数量，从库中自动提取。这样就有了任务数，需要调整时，就有了实际任务数。
@@ -339,61 +343,7 @@ namespace DBzd
             }
         }
 
-        //加载单位人员（从往年交款记录中选择人员）
-        private void LoadPeopleByUnitID()
-        {
-            combPeple.Items.Clear();
 
-            Unit u = combJKDW.SelectedItem as Unit;
-            #region 先加载单位的所有人
-            //var qe = from p in mf.DS.People.AsEnumerable()
-            //         where p.UnitID == u.unitid
-            //         select new
-            //         {
-            //             ID = p.PeopleID,
-            //             Name = p.Name,
-            //             Phone = p.Phone
-            //         };
-            //foreach (var i in qe)
-            //{
-            //    People p = new People();
-            //    p.PeopleID = i.ID;
-            //    p.Name = i.Name;
-            //    p.Phone = i.Phone;
-            //    combPeple.Items.Add(p);
-
-            //}
-            #endregion
-            //如果为空，再加载单位的首长
-            #region 再加载单位的职务首长ID 有兼职单位的一把手。
-
-
-            var q = from up in mf.DS.UnitPost.AsEnumerable()
-                    from p in mf.DS.People.AsEnumerable()
-                    where p.UnitID == u.UnitID && p.UnitID == up.UnitID
-                    select new
-                    {
-                        ID = up.PeopleID,
-                        Name = p.Name,
-                        Phone = p.Phone
-                    };
-            foreach (var i in q)
-            {
-                People p = new People();
-             //todo:   p.PeopleID = i.ID;
-                p.Name = i.Name;
-                p.Phone = i.Phone;
-                combPeple.Items.Add(p);
-
-            }
-
-
-            #endregion
-            combPeple.DisplayMember = "Name";
-            combPeple.SelectedIndex = 0;
-
-
-        }
 
         //自动取整！
         private void btnUp_Click(object sender, EventArgs e)
@@ -427,6 +377,7 @@ namespace DBzd
         {
             //记录交款到库
             SaveMoenyToDB();
+            LoadHasPay();
         }
 
 
@@ -453,7 +404,7 @@ namespace DBzd
 
             }
 
-           
+
             rr.TrueMoney = double.Parse(txtTruePrice.Text.Trim());
             //rr.PayPeoPleID;
             #region 添加人的先不做了。
@@ -518,7 +469,7 @@ namespace DBzd
             //记录真实报刊数到库
             SavePapetNumberTODB();
         }
-        //记录交款到库
+        //记录真实报刊数量及金额到库
         private void SavePapetNumberTODB()
         {
             Unit u = new Unit();
@@ -551,7 +502,7 @@ namespace DBzd
             mf.DS.TruePaper.Dispose();
             mf.truepaperTap.Fill(mf.DS.TruePaper);
 
-            btnSave.Enabled = txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
+            btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
             //自动下一单位,最大值时不能加
             //if (combJKDW.SelectedIndex == combJKDW.Items.Count - 1)
             //{
@@ -657,20 +608,15 @@ namespace DBzd
 
             labTal.Text = tol.ToString();
         }
-        //人员选择变化时
-        private void combPeple_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            People p = combPeple.SelectedItem as People;
-            txtDraweeTel.Text = p.Phone;
-        }
+
 
         //用于记录临时ID的
         private int RID;
 
-        //判断是新增记录，还是修改记录 需要ID值，这样可以通过ListView1得到，这样可以用双击按功能来实现在修改
+        //列表：判断是新增记录，还是修改记录 需要ID值，这样可以通过ListView1得到，这样可以用双击按功能来实现在修改
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
-            txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
+            txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
             if (listView1.SelectedItems.Count > 0)
             {
                 RID = Convert.ToInt32(listView1.SelectedItems[0].Tag.ToString());
@@ -690,10 +636,7 @@ namespace DBzd
                     }
                 }
 
-                //人的ID
-                BKDataSet.PeopleRow pr = mf.DS.People.FindByPeopleID(rr.PayPeopleID);
-                combPeple.Text = pr.Name;
-                txtDraweeTel.Text = pr.Phone;
+
 
 
                 btnEidtUP.Show();
@@ -792,7 +735,7 @@ namespace DBzd
             //从新加载
             LoadHasPay();
 
-            txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
+            txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
 
             combJKDW.Focus();
         }
@@ -825,7 +768,7 @@ namespace DBzd
                     money += Convert.ToInt32(listView1.Items[0].SubItems[1].Text);
 
                 }
-                label8.Text = "已交款总额：" + money.ToString();
+                labhasTotal.Text = money.ToString();
             }
         }
         //手动输入实收金额时
@@ -909,16 +852,16 @@ namespace DBzd
         // 复制中，把计划任务金额列去掉，把交款方式，定为现金。把完成状态定为否。年度为新年度。
 
 
-        
+
 
         //计算已交款单位。
         private void CalcHasPayUnit()
         {
             mf.toolStripStatusLabel1.Text = "";
             //总单位数：
-          //  mf.toolStripStatusLabel1.Text += "单位总数：" + mf.DS.Unit.Select("IsPay='是'").Count().ToString();           
+            //  mf.toolStripStatusLabel1.Text += "单位总数：" + mf.DS.Unit.Select("IsPay='是'").Count().ToString();           
 
-            mf.toolStripStatusLabel1.Text += "现金总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='现金' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString()+"元";
+            mf.toolStripStatusLabel1.Text += "现金总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='现金' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 
             mf.toolStripStatusLabel1.Text += "    汇卡总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='汇卡' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 

@@ -49,6 +49,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +167,7 @@
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -185,32 +187,44 @@
             // 
             // columnHeader1
             // 
+            this.columnHeader1.DisplayIndex = 1;
             this.columnHeader1.Text = "单位";
             this.columnHeader1.Width = 80;
             // 
             // columnHeader2
             // 
+            this.columnHeader2.DisplayIndex = 2;
             this.columnHeader2.Text = "交款方式";
             this.columnHeader2.Width = 72;
             // 
             // columnHeader3
             // 
+            this.columnHeader3.DisplayIndex = 3;
             this.columnHeader3.Text = "金额";
             this.columnHeader3.Width = 147;
             // 
             // columnHeader4
             // 
+            this.columnHeader4.DisplayIndex = 4;
             this.columnHeader4.Text = "状态";
             this.columnHeader4.Width = 80;
             // 
             // columnHeader5
             // 
+            this.columnHeader5.DisplayIndex = 5;
             this.columnHeader5.Text = "年度";
             // 
             // columnHeader6
             // 
+            this.columnHeader6.DisplayIndex = 6;
             this.columnHeader6.Text = "备注";
             this.columnHeader6.Width = 240;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.DisplayIndex = 0;
+            this.columnHeader7.Text = "序号";
+            this.columnHeader7.Width = 30;
             // 
             // FeesFrm
             // 
@@ -252,5 +266,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

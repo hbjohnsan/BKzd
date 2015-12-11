@@ -882,7 +882,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AddressRow FindByID(long ID) {
+            public AddressRow FindByID(int ID) {
                 return ((AddressRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -912,7 +912,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnTown = new global::System.Data.DataColumn("Town", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTown);
@@ -921,8 +921,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnTown.MaxLength = 20;
@@ -1217,7 +1216,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UnitPostRow FindByID(long ID) {
+            public UnitPostRow FindByID(int ID) {
                 return ((UnitPostRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -1251,7 +1250,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnUnitID = new global::System.Data.DataColumn("UnitID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitID);
@@ -1268,8 +1267,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnUnitID.MaxLength = 16;
@@ -1523,7 +1521,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BankRow FindByID(long ID) {
+            public BankRow FindByID(int ID) {
                 return ((BankRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -1553,7 +1551,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnMoney = new global::System.Data.DataColumn("Money", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMoney);
@@ -1562,8 +1560,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
             }
@@ -1911,7 +1908,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FeesRow FindByID(long ID) {
+            public FeesRow FindByID(int ID) {
                 return ((FeesRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -1950,7 +1947,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnUnitID = new global::System.Data.DataColumn("UnitID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitID);
@@ -1977,8 +1974,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnUnitID.MaxLength = 16;
@@ -2748,10 +2744,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PaperShareRow AddPaperShareRow(long ID, string UnidID, string SharedID, long P101, long P102, long P103, long P104, long P105, long P201, long P202, long P203, long P301, long P302, string IsOver, string Year) {
+            public PaperShareRow AddPaperShareRow(string UnidID, string SharedID, long P101, long P102, long P103, long P104, long P105, long P201, long P202, long P203, long P301, long P302, string IsOver, string Year) {
                 PaperShareRow rowPaperShareRow = ((PaperShareRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         UnidID,
                         SharedID,
                         P101,
@@ -2808,7 +2804,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnUnidID = new global::System.Data.DataColumn("UnidID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnidID);
@@ -2838,6 +2834,8 @@ namespace DBzd {
                 base.Columns.Add(this.columnIsOver);
                 this.columnYear = new global::System.Data.DataColumn("Year", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnYear);
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnUnidID.MaxLength = 16;
                 this.columnSharedID.MaxLength = 20;
                 this.columnIsOver.MaxLength = 2;
@@ -3205,7 +3203,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PaperTaskRow AddPaperTaskRow(string UnitId, long P101, long P102, long P103, long P104, long P105, long P201, long P202, long P203, long P301, long P302, double ComnyMoney, double BaseMoney, double TotalMoney, string Year) {
+            public PaperTaskRow AddPaperTaskRow(string UnitId, int P101, int P102, int P103, int P104, int P105, int P201, int P202, int P203, int P301, int P302, double ComnyMoney, double BaseMoney, double TotalMoney, string Year) {
                 PaperTaskRow rowPaperTaskRow = ((PaperTaskRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3231,7 +3229,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PaperTaskRow FindByID(long ID) {
+            public PaperTaskRow FindByID(int ID) {
                 return ((PaperTaskRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -3274,29 +3272,29 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnUnitId = new global::System.Data.DataColumn("UnitId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitId);
-                this.columnP101 = new global::System.Data.DataColumn("P101", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP101 = new global::System.Data.DataColumn("P101", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP101);
-                this.columnP102 = new global::System.Data.DataColumn("P102", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP102 = new global::System.Data.DataColumn("P102", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP102);
-                this.columnP103 = new global::System.Data.DataColumn("P103", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP103 = new global::System.Data.DataColumn("P103", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP103);
-                this.columnP104 = new global::System.Data.DataColumn("P104", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP104 = new global::System.Data.DataColumn("P104", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP104);
-                this.columnP105 = new global::System.Data.DataColumn("P105", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP105 = new global::System.Data.DataColumn("P105", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP105);
-                this.columnP201 = new global::System.Data.DataColumn("P201", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP201 = new global::System.Data.DataColumn("P201", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP201);
-                this.columnP202 = new global::System.Data.DataColumn("P202", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP202 = new global::System.Data.DataColumn("P202", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP202);
-                this.columnP203 = new global::System.Data.DataColumn("P203", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP203 = new global::System.Data.DataColumn("P203", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP203);
-                this.columnP301 = new global::System.Data.DataColumn("P301", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP301 = new global::System.Data.DataColumn("P301", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP301);
-                this.columnP302 = new global::System.Data.DataColumn("P302", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnP302 = new global::System.Data.DataColumn("P302", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnP302);
                 this.columnComnyMoney = new global::System.Data.DataColumn("ComnyMoney", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComnyMoney);
@@ -3309,8 +3307,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnUnitId.AllowDBNull = false;
@@ -3661,7 +3658,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeopleRow FindByPeopleID(long PeopleID) {
+            public PeopleRow FindByPeopleID(int PeopleID) {
                 return ((PeopleRow)(this.Rows.Find(new object[] {
                             PeopleID})));
             }
@@ -3700,7 +3697,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnPeopleID = new global::System.Data.DataColumn("PeopleID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnPeopleID = new global::System.Data.DataColumn("PeopleID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPeopleID);
                 this.columnUnitID = new global::System.Data.DataColumn("UnitID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitID);
@@ -3727,8 +3724,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPeopleID}, true));
                 this.columnPeopleID.AutoIncrement = true;
-                this.columnPeopleID.AutoIncrementSeed = -1;
-                this.columnPeopleID.AutoIncrementStep = -1;
+                this.columnPeopleID.AutoIncrementSeed = 1;
                 this.columnPeopleID.AllowDBNull = false;
                 this.columnPeopleID.Unique = true;
                 this.columnUnitID.MaxLength = 16;
@@ -4053,7 +4049,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PocketRow FindByID(long ID) {
+            public PocketRow FindByID(int ID) {
                 return ((PocketRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -4089,7 +4085,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnM50 = new global::System.Data.DataColumn("M50", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnM50);
@@ -4110,8 +4106,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
             }
@@ -4360,7 +4355,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PosterRow FindByID(long ID) {
+            public PosterRow FindByID(int ID) {
                 return ((PosterRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -4390,7 +4385,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnPeopleID = new global::System.Data.DataColumn("PeopleID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPeopleID);
@@ -4399,8 +4394,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
             }
@@ -4544,8 +4538,6 @@ namespace DBzd {
             
             private global::System.Data.DataColumn columnTrueMoney;
             
-            private global::System.Data.DataColumn columnPayPeopleID;
-            
             private global::System.Data.DataColumn columnPayTime;
             
             private global::System.Data.DataColumn columnIsOver;
@@ -4621,14 +4613,6 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PayPeopleIDColumn {
-                get {
-                    return this.columnPayPeopleID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn PayTimeColumn {
                 get {
                     return this.columnPayTime;
@@ -4696,14 +4680,13 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReceivablesRow AddReceivablesRow(string UnitID, string PayKind, double TrueMoney, int PayPeopleID, System.DateTime PayTime, string IsOver, string BZ, string Year) {
+            public ReceivablesRow AddReceivablesRow(string UnitID, string PayKind, double TrueMoney, System.DateTime PayTime, string IsOver, string BZ, string Year) {
                 ReceivablesRow rowReceivablesRow = ((ReceivablesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         UnitID,
                         PayKind,
                         TrueMoney,
-                        PayPeopleID,
                         PayTime,
                         IsOver,
                         BZ,
@@ -4741,7 +4724,6 @@ namespace DBzd {
                 this.columnUnitID = base.Columns["UnitID"];
                 this.columnPayKind = base.Columns["PayKind"];
                 this.columnTrueMoney = base.Columns["TrueMoney"];
-                this.columnPayPeopleID = base.Columns["PayPeopleID"];
                 this.columnPayTime = base.Columns["PayTime"];
                 this.columnIsOver = base.Columns["IsOver"];
                 this.columnBZ = base.Columns["BZ"];
@@ -4759,8 +4741,6 @@ namespace DBzd {
                 base.Columns.Add(this.columnPayKind);
                 this.columnTrueMoney = new global::System.Data.DataColumn("TrueMoney", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTrueMoney);
-                this.columnPayPeopleID = new global::System.Data.DataColumn("PayPeopleID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPayPeopleID);
                 this.columnPayTime = new global::System.Data.DataColumn("PayTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayTime);
                 this.columnIsOver = new global::System.Data.DataColumn("IsOver", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5013,10 +4993,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RemittanceRow AddRemittanceRow(long ID, System.DateTime GetTime, double Money) {
+            public RemittanceRow AddRemittanceRow(System.DateTime GetTime, double Money) {
                 RemittanceRow rowRemittanceRow = ((RemittanceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         GetTime,
                         Money};
                 rowRemittanceRow.ItemArray = columnValuesArray;
@@ -5049,12 +5029,14 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnGetTime = new global::System.Data.DataColumn("GetTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGetTime);
                 this.columnMoney = new global::System.Data.DataColumn("Money", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMoney);
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5323,7 +5305,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TrueNumRow FindByID(long ID) {
+            public TrueNumRow FindByID(int ID) {
                 return ((TrueNumRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -5355,7 +5337,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnUnitID = new global::System.Data.DataColumn("UnitID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitID);
@@ -5368,8 +5350,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnUnitID.MaxLength = 16;
@@ -5753,7 +5734,7 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TruePaperRow FindByID(long ID) {
+            public TruePaperRow FindByID(int ID) {
                 return ((TruePaperRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -5795,7 +5776,7 @@ namespace DBzd {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnUnitID = new global::System.Data.DataColumn("UnitID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitID);
@@ -5828,8 +5809,7 @@ namespace DBzd {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnUnitID.MaxLength = 16;
@@ -6355,9 +6335,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableAddress.IDColumn]));
+                    return ((int)(this[this.tableAddress.IDColumn]));
                 }
                 set {
                     this[this.tableAddress.IDColumn] = value;
@@ -6437,9 +6417,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableUnitPost.IDColumn]));
+                    return ((int)(this[this.tableUnitPost.IDColumn]));
                 }
                 set {
                     this[this.tableUnitPost.IDColumn] = value;
@@ -6631,9 +6611,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableBank.IDColumn]));
+                    return ((int)(this[this.tableBank.IDColumn]));
                 }
                 set {
                     this[this.tableBank.IDColumn] = value;
@@ -6713,9 +6693,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableFees.IDColumn]));
+                    return ((int)(this[this.tableFees.IDColumn]));
                 }
                 set {
                     this[this.tableFees.IDColumn] = value;
@@ -7336,10 +7316,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperShare.IDColumn]));
+                        return ((int)(this[this.tablePaperShare.IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperShare”中列“ID”的值为 DBNull。", e);
@@ -7771,9 +7751,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tablePaperTask.IDColumn]));
+                    return ((int)(this[this.tablePaperTask.IDColumn]));
                 }
                 set {
                     this[this.tablePaperTask.IDColumn] = value;
@@ -7793,10 +7773,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P101 {
+            public int P101 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P101Column]));
+                        return ((int)(this[this.tablePaperTask.P101Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P101”的值为 DBNull。", e);
@@ -7809,10 +7789,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P102 {
+            public int P102 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P102Column]));
+                        return ((int)(this[this.tablePaperTask.P102Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P102”的值为 DBNull。", e);
@@ -7825,10 +7805,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P103 {
+            public int P103 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P103Column]));
+                        return ((int)(this[this.tablePaperTask.P103Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P103”的值为 DBNull。", e);
@@ -7841,10 +7821,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P104 {
+            public int P104 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P104Column]));
+                        return ((int)(this[this.tablePaperTask.P104Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P104”的值为 DBNull。", e);
@@ -7857,10 +7837,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P105 {
+            public int P105 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P105Column]));
+                        return ((int)(this[this.tablePaperTask.P105Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P105”的值为 DBNull。", e);
@@ -7873,10 +7853,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P201 {
+            public int P201 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P201Column]));
+                        return ((int)(this[this.tablePaperTask.P201Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P201”的值为 DBNull。", e);
@@ -7889,10 +7869,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P202 {
+            public int P202 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P202Column]));
+                        return ((int)(this[this.tablePaperTask.P202Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P202”的值为 DBNull。", e);
@@ -7905,10 +7885,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P203 {
+            public int P203 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P203Column]));
+                        return ((int)(this[this.tablePaperTask.P203Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P203”的值为 DBNull。", e);
@@ -7921,10 +7901,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P301 {
+            public int P301 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P301Column]));
+                        return ((int)(this[this.tablePaperTask.P301Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P301”的值为 DBNull。", e);
@@ -7937,10 +7917,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long P302 {
+            public int P302 {
                 get {
                     try {
-                        return ((long)(this[this.tablePaperTask.P302Column]));
+                        return ((int)(this[this.tablePaperTask.P302Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PaperTask”中列“P302”的值为 DBNull。", e);
@@ -8200,9 +8180,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long PeopleID {
+            public int PeopleID {
                 get {
-                    return ((long)(this[this.tablePeople.PeopleIDColumn]));
+                    return ((int)(this[this.tablePeople.PeopleIDColumn]));
                 }
                 set {
                     this[this.tablePeople.PeopleIDColumn] = value;
@@ -8534,9 +8514,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tablePocket.IDColumn]));
+                    return ((int)(this[this.tablePocket.IDColumn]));
                 }
                 set {
                     this[this.tablePocket.IDColumn] = value;
@@ -8784,9 +8764,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tablePoster.IDColumn]));
+                    return ((int)(this[this.tablePoster.IDColumn]));
                 }
                 set {
                     this[this.tablePoster.IDColumn] = value;
@@ -8925,22 +8905,6 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PayPeopleID {
-                get {
-                    try {
-                        return ((int)(this[this.tableReceivables.PayPeopleIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Receivables”中列“PayPeopleID”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableReceivables.PayPeopleIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime PayTime {
                 get {
                     try {
@@ -9041,18 +9005,6 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPayPeopleIDNull() {
-                return this.IsNull(this.tableReceivables.PayPeopleIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPayPeopleIDNull() {
-                this[this.tableReceivables.PayPeopleIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPayTimeNull() {
                 return this.IsNull(this.tableReceivables.PayTimeColumn);
             }
@@ -9116,10 +9068,10 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
                     try {
-                        return ((long)(this[this.tableRemittance.IDColumn]));
+                        return ((int)(this[this.tableRemittance.IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“Remittance”中列“ID”的值为 DBNull。", e);
@@ -9215,9 +9167,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableTrueNum.IDColumn]));
+                    return ((int)(this[this.tableTrueNum.IDColumn]));
                 }
                 set {
                     this[this.tableTrueNum.IDColumn] = value;
@@ -9353,9 +9305,9 @@ namespace DBzd {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableTruePaper.IDColumn]));
+                    return ((int)(this[this.tableTruePaper.IDColumn]));
                 }
                 set {
                     this[this.tableTruePaper.IDColumn] = value;
@@ -18463,7 +18415,6 @@ namespace DBzd.BKDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("UnitID", "UnitID");
             tableMapping.ColumnMappings.Add("PayKind", "PayKind");
             tableMapping.ColumnMappings.Add("TrueMoney", "TrueMoney");
-            tableMapping.ColumnMappings.Add("PayPeopleID", "PayPeopleID");
             tableMapping.ColumnMappings.Add("PayTime", "PayTime");
             tableMapping.ColumnMappings.Add("IsOver", "IsOver");
             tableMapping.ColumnMappings.Add("BZ", "BZ");
@@ -18471,7 +18422,7 @@ namespace DBzd.BKDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[Receivables] WHERE (([ID] = @Original_ID) AND ((@IsNull_UnitID = 1 AND [UnitID] IS NULL) OR ([UnitID] = @Original_UnitID)) AND ((@IsNull_PayKind = 1 AND [PayKind] IS NULL) OR ([PayKind] = @Original_PayKind)) AND ((@IsNull_TrueMoney = 1 AND [TrueMoney] IS NULL) OR ([TrueMoney] = @Original_TrueMoney)) AND ((@IsNull_PayPeopleID = 1 AND [PayPeopleID] IS NULL) OR ([PayPeopleID] = @Original_PayPeopleID)) AND ((@IsNull_PayTime = 1 AND [PayTime] IS NULL) OR ([PayTime] = @Original_PayTime)) AND ((@IsNull_IsOver = 1 AND [IsOver] IS NULL) OR ([IsOver] = @Original_IsOver)) AND ((@IsNull_BZ = 1 AND [BZ] IS NULL) OR ([BZ] = @Original_BZ)) AND ((@IsNull_Year = 1 AND [Year] IS NULL) OR ([Year] = @Original_Year)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[Receivables] WHERE (([ID] = @Original_ID) AND ((@IsNull_UnitID = 1 AND [UnitID] IS NULL) OR ([UnitID] = @Original_UnitID)) AND ((@IsNull_PayKind = 1 AND [PayKind] IS NULL) OR ([PayKind] = @Original_PayKind)) AND ((@IsNull_TrueMoney = 1 AND [TrueMoney] IS NULL) OR ([TrueMoney] = @Original_TrueMoney)) AND ((@IsNull_PayTime = 1 AND [PayTime] IS NULL) OR ([PayTime] = @Original_PayTime)) AND ((@IsNull_IsOver = 1 AND [IsOver] IS NULL) OR ([IsOver] = @Original_IsOver)) AND ((@IsNull_BZ = 1 AND [BZ] IS NULL) OR ([BZ] = @Original_BZ)) AND ((@IsNull_Year = 1 AND [Year] IS NULL) OR ([Year] = @Original_Year)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_ID";
@@ -18523,21 +18474,6 @@ namespace DBzd.BKDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.DbType = global::System.Data.DbType.Double;
             param.SourceColumn = "TrueMoney";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_PayPeopleID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "PayPeopleID";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_PayPeopleID";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "PayPeopleID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -18602,8 +18538,8 @@ namespace DBzd.BKDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[Receivables] ([UnitID], [PayKind], [T" +
-                "rueMoney], [PayPeopleID], [PayTime], [IsOver], [BZ], [Year]) VALUES (@UnitID, @P" +
-                "ayKind, @TrueMoney, @PayPeopleID, @PayTime, @IsOver, @BZ, @Year)";
+                "rueMoney], [PayTime], [IsOver], [BZ], [Year]) VALUES (@UnitID, @PayKind, @TrueMo" +
+                "ney, @PayTime, @IsOver, @BZ, @Year)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@UnitID";
@@ -18622,12 +18558,6 @@ namespace DBzd.BKDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.DbType = global::System.Data.DbType.Double;
             param.SourceColumn = "TrueMoney";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@PayPeopleID";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "PayPeopleID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@PayTime";
@@ -18654,7 +18584,7 @@ namespace DBzd.BKDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[Receivables] SET [UnitID] = @UnitID, [PayKind] = @PayKind, [TrueMoney] = @TrueMoney, [PayPeopleID] = @PayPeopleID, [PayTime] = @PayTime, [IsOver] = @IsOver, [BZ] = @BZ, [Year] = @Year WHERE (([ID] = @Original_ID) AND ((@IsNull_UnitID = 1 AND [UnitID] IS NULL) OR ([UnitID] = @Original_UnitID)) AND ((@IsNull_PayKind = 1 AND [PayKind] IS NULL) OR ([PayKind] = @Original_PayKind)) AND ((@IsNull_TrueMoney = 1 AND [TrueMoney] IS NULL) OR ([TrueMoney] = @Original_TrueMoney)) AND ((@IsNull_PayPeopleID = 1 AND [PayPeopleID] IS NULL) OR ([PayPeopleID] = @Original_PayPeopleID)) AND ((@IsNull_PayTime = 1 AND [PayTime] IS NULL) OR ([PayTime] = @Original_PayTime)) AND ((@IsNull_IsOver = 1 AND [IsOver] IS NULL) OR ([IsOver] = @Original_IsOver)) AND ((@IsNull_BZ = 1 AND [BZ] IS NULL) OR ([BZ] = @Original_BZ)) AND ((@IsNull_Year = 1 AND [Year] IS NULL) OR ([Year] = @Original_Year)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[Receivables] SET [UnitID] = @UnitID, [PayKind] = @PayKind, [TrueMoney] = @TrueMoney, [PayTime] = @PayTime, [IsOver] = @IsOver, [BZ] = @BZ, [Year] = @Year WHERE (([ID] = @Original_ID) AND ((@IsNull_UnitID = 1 AND [UnitID] IS NULL) OR ([UnitID] = @Original_UnitID)) AND ((@IsNull_PayKind = 1 AND [PayKind] IS NULL) OR ([PayKind] = @Original_PayKind)) AND ((@IsNull_TrueMoney = 1 AND [TrueMoney] IS NULL) OR ([TrueMoney] = @Original_TrueMoney)) AND ((@IsNull_PayTime = 1 AND [PayTime] IS NULL) OR ([PayTime] = @Original_PayTime)) AND ((@IsNull_IsOver = 1 AND [IsOver] IS NULL) OR ([IsOver] = @Original_IsOver)) AND ((@IsNull_BZ = 1 AND [BZ] IS NULL) OR ([BZ] = @Original_BZ)) AND ((@IsNull_Year = 1 AND [Year] IS NULL) OR ([Year] = @Original_Year)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@UnitID";
@@ -18673,12 +18603,6 @@ namespace DBzd.BKDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.DbType = global::System.Data.DbType.Double;
             param.SourceColumn = "TrueMoney";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@PayPeopleID";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "PayPeopleID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@PayTime";
@@ -18753,21 +18677,6 @@ namespace DBzd.BKDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.DbType = global::System.Data.DbType.Double;
             param.SourceColumn = "TrueMoney";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_PayPeopleID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "PayPeopleID";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_PayPeopleID";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "PayPeopleID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -18844,8 +18753,8 @@ namespace DBzd.BKDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [ID], [UnitID], [PayKind], [TrueMoney], [PayPeopleID], [PayTime], [IsOver]" +
-                ", [BZ], [Year] FROM [Receivables]";
+            this._commandCollection[0].CommandText = "SELECT ID, UnitID, PayKind, TrueMoney, PayTime, IsOver, BZ, Year FROM Receivables" +
+                "";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18906,7 +18815,7 @@ namespace DBzd.BKDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_ID, string Original_UnitID, string Original_PayKind, global::System.Nullable<double> Original_TrueMoney, global::System.Nullable<long> Original_PayPeopleID, global::System.Nullable<global::System.DateTime> Original_PayTime, string Original_IsOver, string Original_BZ, string Original_Year) {
+        public virtual int Delete(long Original_ID, string Original_UnitID, string Original_PayKind, global::System.Nullable<double> Original_TrueMoney, global::System.Nullable<global::System.DateTime> Original_PayTime, string Original_IsOver, string Original_BZ, string Original_Year) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_ID));
             if ((Original_UnitID == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -18932,45 +18841,37 @@ namespace DBzd.BKDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_PayPeopleID.HasValue == true)) {
+            if ((Original_PayTime.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((long)(Original_PayPeopleID.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_PayTime.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_PayTime.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_PayTime.Value));
-            }
-            else {
+            if ((Original_IsOver == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_IsOver == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_IsOver));
+            }
+            if ((Original_BZ == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_IsOver));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_BZ));
             }
-            if ((Original_BZ == null)) {
+            if ((Original_Year == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_BZ));
-            }
-            if ((Original_Year == null)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_Year));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Year));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18992,7 +18893,7 @@ namespace DBzd.BKDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string UnitID, string PayKind, global::System.Nullable<double> TrueMoney, global::System.Nullable<long> PayPeopleID, global::System.Nullable<global::System.DateTime> PayTime, string IsOver, string BZ, string Year) {
+        public virtual int Insert(string UnitID, string PayKind, global::System.Nullable<double> TrueMoney, global::System.Nullable<global::System.DateTime> PayTime, string IsOver, string BZ, string Year) {
             if ((UnitID == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -19011,35 +18912,29 @@ namespace DBzd.BKDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((PayPeopleID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((long)(PayPeopleID.Value));
+            if ((PayTime.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(PayTime.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((PayTime.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(PayTime.Value));
-            }
-            else {
+            if ((IsOver == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((IsOver == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(IsOver));
+            }
+            if ((BZ == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(IsOver));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(BZ));
             }
-            if ((BZ == null)) {
+            if ((Year == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(BZ));
-            }
-            if ((Year == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Year));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Year));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -19061,24 +18956,7 @@ namespace DBzd.BKDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string UnitID, 
-                    string PayKind, 
-                    global::System.Nullable<double> TrueMoney, 
-                    global::System.Nullable<long> PayPeopleID, 
-                    global::System.Nullable<global::System.DateTime> PayTime, 
-                    string IsOver, 
-                    string BZ, 
-                    string Year, 
-                    long Original_ID, 
-                    string Original_UnitID, 
-                    string Original_PayKind, 
-                    global::System.Nullable<double> Original_TrueMoney, 
-                    global::System.Nullable<long> Original_PayPeopleID, 
-                    global::System.Nullable<global::System.DateTime> Original_PayTime, 
-                    string Original_IsOver, 
-                    string Original_BZ, 
-                    string Original_Year) {
+        public virtual int Update(string UnitID, string PayKind, global::System.Nullable<double> TrueMoney, global::System.Nullable<global::System.DateTime> PayTime, string IsOver, string BZ, string Year, long Original_ID, string Original_UnitID, string Original_PayKind, global::System.Nullable<double> Original_TrueMoney, global::System.Nullable<global::System.DateTime> Original_PayTime, string Original_IsOver, string Original_BZ, string Original_Year) {
             if ((UnitID == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -19097,100 +18975,86 @@ namespace DBzd.BKDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((PayPeopleID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(PayPeopleID.Value));
+            if ((PayTime.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(PayTime.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((PayTime.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(PayTime.Value));
-            }
-            else {
+            if ((IsOver == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((IsOver == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(IsOver));
+            }
+            if ((BZ == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(IsOver));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(BZ));
             }
-            if ((BZ == null)) {
+            if ((Year == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(BZ));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Year));
             }
-            if ((Year == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Year));
-            }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_ID));
             if ((Original_UnitID == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_UnitID));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_UnitID));
             }
             if ((Original_PayKind == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_PayKind));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_PayKind));
             }
             if ((Original_TrueMoney.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_TrueMoney.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_TrueMoney.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((Original_PayPeopleID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((long)(Original_PayPeopleID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_PayTime.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_PayTime.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_PayTime.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_IsOver == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_IsOver));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_IsOver));
             }
             if ((Original_BZ == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_BZ));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_BZ));
             }
             if ((Original_Year == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Year));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Year));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

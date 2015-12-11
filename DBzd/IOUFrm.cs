@@ -87,6 +87,7 @@ namespace DBzd
         {
             rtbDoc.Clear();
             Unit u = combJKDW.SelectedItem as Unit;
+            string year = toolStripComboBox1.SelectedItem.ToString();
             rtbDoc.Font = new Font("仿宋", 16, FontStyle.Regular);
 
             rtbDoc.Text = "                         欠   条" + "\n";
@@ -98,10 +99,38 @@ namespace DBzd
             rtbDoc.Text += "\n                         电    话：" + txtTel.Text;
             rtbDoc.Text += "\n                         日    期：" + System.DateTime.Now.ToString("yyyy年MM月dd日");
             rtbDoc.Text += "\n\n\n";
-            rtbDoc.Text += "----------------------------------------------------------\n";
-            rtbDoc.Text += "|人民日报｜经济日报｜------------------------------------｜\n";
-            rtbDoc.Text += "----------------------------------------------------------\n";
-
+            rtbDoc.Text += "---------------------------------------------------------\n";
+            rtbDoc.Text += "人民日报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P101"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='101' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text +="财政补贴："+mf.DS.Paper.Select("PaperID='101' and Year='"+year+"'")[0]["SubSidy"].ToString().ToString()+"元。\n";
+            rtbDoc.Text += "求是:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P102"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='102' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='102' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "光明日报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P103"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='103' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='103' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "经济日报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P104"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='104' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='104' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "新华每日电讯:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P105"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='105' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='105' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "河北日报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P201"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='201' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='201' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "河北经济日报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P202"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='202' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='202' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "燕赵都市报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P203"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='203' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='203' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "唐山劳动日报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P301"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='301' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='301' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+            rtbDoc.Text += "唐山晚报:" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P302"].ToString() + "份；";
+            rtbDoc.Text += "每份单价：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["Price"].ToString() + "元，";
+            rtbDoc.Text += "财政补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+        
         }
         #endregion
 
@@ -239,41 +268,40 @@ namespace DBzd
             if (combJKDW.Items.Count > 0)
             {
                 combJKDW.SelectedIndex = 0;
-              //  txtTruePrice.Text = mf.DS.PaperTask.Compute("TotalMoney", "UnitID='" + (combJKDW.SelectedItem as Unit).UnitID + "'and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString();
-                            
-            }
-           
-                
 
-            
+            }
+
+
+
+
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            double result;
-            if (IsNumberic(txtTruePrice.Text.Trim(), out result))
-            {
-                loadPrintText();
-            }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    double result;
+        //    if (IsNumberic(txtTruePrice.Text.Trim(), out result))
+        //    {
+        //        loadPrintText();
+        //    }
 
 
-        }
-        private bool IsNumberic(string txt, out double result)
-        {
-            result = -1;
-            try
-            {
-                result = double.Parse(txt);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
+        //}
+        //private bool IsNumberic(string txt, out double result)
+        //{
+        //    result = -1;
+        //    try
+        //    {
+        //        result = double.Parse(txt);
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return false;
 
-            }
-        }
+        //    }
+        //}
 
         #region Printing
         private int checkPrint;
@@ -335,8 +363,9 @@ namespace DBzd
 
         private void combJKDW_SelectedValueChanged(object sender, EventArgs e)
         {
+            //选择单位后，显示任务金额。采用Table.select方法
             txtTruePrice.Text = mf.DS.PaperTask.Select("UnitID='" + (combJKDW.SelectedItem as Unit).UnitID + "'and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'")[0]["TotalMoney"].ToString();
-                
+
         }
 
 

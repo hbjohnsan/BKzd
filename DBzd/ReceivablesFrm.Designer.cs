@@ -40,20 +40,16 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEidtUP = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rabNv = new System.Windows.Forms.RadioButton();
-            this.rabNan = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rabNo = new System.Windows.Forms.RadioButton();
             this.rabYes = new System.Windows.Forms.RadioButton();
-            this.combPeple = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtbz = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.btnUp = new System.Windows.Forms.Button();
             this.gBoxKind = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radNOJiao = new System.Windows.Forms.RadioButton();
             this.radIOU = new System.Windows.Forms.RadioButton();
             this.rabRemit = new System.Windows.Forms.RadioButton();
             this.rabCard = new System.Windows.Forms.RadioButton();
@@ -62,14 +58,11 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDraweeTel = new System.Windows.Forms.TextBox();
             this.combJKDW = new System.Windows.Forms.ComboBox();
             this.txtTruePrice = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtTotalMoney = new System.Windows.Forms.TextBox();
             this.txtBaseMoeny = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -81,7 +74,6 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,9 +119,9 @@
             this.nUD20 = new System.Windows.Forms.NumericUpDown();
             this.nUD50 = new System.Windows.Forms.NumericUpDown();
             this.nUD100 = new System.Windows.Forms.NumericUpDown();
+            this.labhasTotal = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.gBoxKind.SuspendLayout();
             this.gBoxJiaoKuanMK.SuspendLayout();
@@ -224,9 +216,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnEidtUP);
-            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.combPeple);
             this.groupBox2.Controls.Add(this.btnSave);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtbz);
@@ -237,28 +227,25 @@
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txtDraweeTel);
             this.groupBox2.Controls.Add(this.combJKDW);
             this.groupBox2.Controls.Add(this.txtTruePrice);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtTotalMoney);
             this.groupBox2.Controls.Add(this.txtBaseMoeny);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtCompMoney);
             this.groupBox2.Location = new System.Drawing.Point(7, 28);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(387, 454);
+            this.groupBox2.Size = new System.Drawing.Size(387, 522);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "交款";
             // 
             // btnEidtUP
             // 
-            this.btnEidtUP.Location = new System.Drawing.Point(219, 311);
+            this.btnEidtUP.Location = new System.Drawing.Point(219, 245);
             this.btnEidtUP.Name = "btnEidtUP";
             this.btnEidtUP.Size = new System.Drawing.Size(69, 23);
             this.btnEidtUP.TabIndex = 27;
@@ -266,45 +253,11 @@
             this.btnEidtUP.UseVisualStyleBackColor = true;
             this.btnEidtUP.Click += new System.EventHandler(this.btnEidtUP_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.rabNv);
-            this.groupBox3.Controls.Add(this.rabNan);
-            this.groupBox3.Location = new System.Drawing.Point(200, 94);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(175, 48);
-            this.groupBox3.TabIndex = 26;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "性别";
-            // 
-            // rabNv
-            // 
-            this.rabNv.AutoSize = true;
-            this.rabNv.Location = new System.Drawing.Point(94, 20);
-            this.rabNv.Name = "rabNv";
-            this.rabNv.Size = new System.Drawing.Size(35, 16);
-            this.rabNv.TabIndex = 25;
-            this.rabNv.TabStop = true;
-            this.rabNv.Text = "女";
-            this.rabNv.UseVisualStyleBackColor = true;
-            // 
-            // rabNan
-            // 
-            this.rabNan.AutoSize = true;
-            this.rabNan.Checked = true;
-            this.rabNan.Location = new System.Drawing.Point(25, 20);
-            this.rabNan.Name = "rabNan";
-            this.rabNan.Size = new System.Drawing.Size(35, 16);
-            this.rabNan.TabIndex = 24;
-            this.rabNan.TabStop = true;
-            this.rabNan.Text = "男";
-            this.rabNan.UseVisualStyleBackColor = true;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.rabNo);
             this.groupBox4.Controls.Add(this.rabYes);
-            this.groupBox4.Location = new System.Drawing.Point(6, 259);
+            this.groupBox4.Location = new System.Drawing.Point(6, 193);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(369, 44);
             this.groupBox4.TabIndex = 23;
@@ -333,18 +286,9 @@
             this.rabYes.Text = "是";
             this.rabYes.UseVisualStyleBackColor = true;
             // 
-            // combPeple
-            // 
-            this.combPeple.FormattingEnabled = true;
-            this.combPeple.Location = new System.Drawing.Point(81, 95);
-            this.combPeple.Name = "combPeple";
-            this.combPeple.Size = new System.Drawing.Size(105, 20);
-            this.combPeple.TabIndex = 22;
-            this.combPeple.SelectedIndexChanged += new System.EventHandler(this.combPeple_SelectedIndexChanged);
-            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(294, 311);
+            this.btnSave.Location = new System.Drawing.Point(294, 245);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 21;
@@ -355,7 +299,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 342);
+            this.label3.Location = new System.Drawing.Point(12, 269);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 20;
@@ -363,16 +307,16 @@
             // 
             // txtbz
             // 
-            this.txtbz.Location = new System.Drawing.Point(5, 357);
+            this.txtbz.Location = new System.Drawing.Point(6, 297);
             this.txtbz.Multiline = true;
             this.txtbz.Name = "txtbz";
-            this.txtbz.Size = new System.Drawing.Size(375, 90);
+            this.txtbz.Size = new System.Drawing.Size(375, 207);
             this.txtbz.TabIndex = 5;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(198, 211);
+            this.label22.Location = new System.Drawing.Point(198, 145);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(65, 12);
             this.label22.TabIndex = 10;
@@ -380,7 +324,7 @@
             // 
             // btnUp
             // 
-            this.btnUp.Location = new System.Drawing.Point(294, 206);
+            this.btnUp.Location = new System.Drawing.Point(294, 140);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(75, 23);
             this.btnUp.TabIndex = 8;
@@ -390,33 +334,33 @@
             // 
             // gBoxKind
             // 
-            this.gBoxKind.Controls.Add(this.radioButton1);
+            this.gBoxKind.Controls.Add(this.radNOJiao);
             this.gBoxKind.Controls.Add(this.radIOU);
             this.gBoxKind.Controls.Add(this.rabRemit);
             this.gBoxKind.Controls.Add(this.rabCard);
             this.gBoxKind.Controls.Add(this.rabMoney);
-            this.gBoxKind.Location = new System.Drawing.Point(6, 152);
+            this.gBoxKind.Location = new System.Drawing.Point(8, 90);
             this.gBoxKind.Name = "gBoxKind";
             this.gBoxKind.Size = new System.Drawing.Size(369, 42);
             this.gBoxKind.TabIndex = 19;
             this.gBoxKind.TabStop = false;
             this.gBoxKind.Text = "交款方式";
             // 
-            // radioButton1
+            // radNOJiao
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(302, 17);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "未交";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radNOJiao.AutoSize = true;
+            this.radNOJiao.Location = new System.Drawing.Point(298, 17);
+            this.radNOJiao.Name = "radNOJiao";
+            this.radNOJiao.Size = new System.Drawing.Size(47, 16);
+            this.radNOJiao.TabIndex = 14;
+            this.radNOJiao.TabStop = true;
+            this.radNOJiao.Text = "未交";
+            this.radNOJiao.UseVisualStyleBackColor = true;
             // 
             // radIOU
             // 
             this.radIOU.AutoSize = true;
-            this.radIOU.Location = new System.Drawing.Point(235, 17);
+            this.radIOU.Location = new System.Drawing.Point(224, 17);
             this.radIOU.Name = "radIOU";
             this.radIOU.Size = new System.Drawing.Size(47, 16);
             this.radIOU.TabIndex = 13;
@@ -426,7 +370,7 @@
             // rabRemit
             // 
             this.rabRemit.AutoSize = true;
-            this.rabRemit.Location = new System.Drawing.Point(166, 17);
+            this.rabRemit.Location = new System.Drawing.Point(150, 17);
             this.rabRemit.Name = "rabRemit";
             this.rabRemit.Size = new System.Drawing.Size(47, 16);
             this.rabRemit.TabIndex = 12;
@@ -436,7 +380,7 @@
             // rabCard
             // 
             this.rabCard.AutoSize = true;
-            this.rabCard.Location = new System.Drawing.Point(103, 17);
+            this.rabCard.Location = new System.Drawing.Point(76, 17);
             this.rabCard.Name = "rabCard";
             this.rabCard.Size = new System.Drawing.Size(47, 16);
             this.rabCard.TabIndex = 12;
@@ -447,7 +391,7 @@
             // 
             this.rabMoney.AutoSize = true;
             this.rabMoney.Checked = true;
-            this.rabMoney.Location = new System.Drawing.Point(41, 17);
+            this.rabMoney.Location = new System.Drawing.Point(18, 17);
             this.rabMoney.Name = "rabMoney";
             this.rabMoney.Size = new System.Drawing.Size(47, 16);
             this.rabMoney.TabIndex = 12;
@@ -458,7 +402,7 @@
             // labRMB
             // 
             this.labRMB.AutoSize = true;
-            this.labRMB.Location = new System.Drawing.Point(12, 241);
+            this.labRMB.Location = new System.Drawing.Point(12, 175);
             this.labRMB.Name = "labRMB";
             this.labRMB.Size = new System.Drawing.Size(83, 12);
             this.labRMB.TabIndex = 9;
@@ -466,7 +410,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(92, 311);
+            this.dateTimePicker1.Location = new System.Drawing.Point(83, 247);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(106, 21);
             this.dateTimePicker1.TabIndex = 3;
@@ -474,7 +418,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 316);
+            this.label6.Location = new System.Drawing.Point(12, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 0;
@@ -489,13 +433,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "交款单位：";
             // 
-            // txtDraweeTel
-            // 
-            this.txtDraweeTel.Location = new System.Drawing.Point(80, 119);
-            this.txtDraweeTel.Name = "txtDraweeTel";
-            this.txtDraweeTel.Size = new System.Drawing.Size(106, 21);
-            this.txtDraweeTel.TabIndex = 5;
-            // 
             // combJKDW
             // 
             this.combJKDW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -508,7 +445,7 @@
             // 
             // txtTruePrice
             // 
-            this.txtTruePrice.Location = new System.Drawing.Point(83, 208);
+            this.txtTruePrice.Location = new System.Drawing.Point(83, 142);
             this.txtTruePrice.Name = "txtTruePrice";
             this.txtTruePrice.Size = new System.Drawing.Size(105, 21);
             this.txtTruePrice.TabIndex = 5;
@@ -517,20 +454,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 211);
+            this.label9.Location = new System.Drawing.Point(12, 145);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 0;
             this.label9.Text = "实收金额：";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "交 款 人：";
             // 
             // label17
             // 
@@ -549,15 +477,6 @@
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 0;
             this.label4.Text = "报刊金额：";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 122);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "交款电话：";
             // 
             // txtTotalMoney
             // 
@@ -604,7 +523,7 @@
             // labTal
             // 
             this.labTal.AutoSize = true;
-            this.labTal.Location = new System.Drawing.Point(471, 388);
+            this.labTal.Location = new System.Drawing.Point(471, 393);
             this.labTal.Name = "labTal";
             this.labTal.Size = new System.Drawing.Size(23, 12);
             this.labTal.TabIndex = 15;
@@ -613,7 +532,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(400, 388);
+            this.label16.Location = new System.Drawing.Point(400, 393);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 12);
             this.label16.TabIndex = 14;
@@ -634,7 +553,6 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
             this.columnHeader4});
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.FullRowSelect = true;
@@ -657,11 +575,6 @@
             // 
             this.columnHeader2.Text = "金额";
             this.columnHeader2.Width = 102;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "交款人";
-            this.columnHeader3.Width = 95;
             // 
             // columnHeader4
             // 
@@ -1131,17 +1044,27 @@
             this.nUD100.Size = new System.Drawing.Size(62, 21);
             this.nUD100.TabIndex = 0;
             // 
+            // labhasTotal
+            // 
+            this.labhasTotal.AutoSize = true;
+            this.labhasTotal.Location = new System.Drawing.Point(487, 180);
+            this.labhasTotal.Name = "labhasTotal";
+            this.labhasTotal.Size = new System.Drawing.Size(41, 12);
+            this.labhasTotal.TabIndex = 27;
+            this.labhasTotal.Text = "label2";
+            // 
             // ReceivablesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 484);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.labTal);
+            this.ClientSize = new System.Drawing.Size(964, 562);
+            this.Controls.Add(this.labhasTotal);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.labTal);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.gBoxJiaoKuanMK);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1152,8 +1075,6 @@
             this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.gBoxKind.ResumeLayout(false);
@@ -1205,14 +1126,11 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDraweeTel;
         private System.Windows.Forms.ComboBox combJKDW;
         private System.Windows.Forms.TextBox txtTruePrice;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtTotalMoney;
         private System.Windows.Forms.TextBox txtBaseMoeny;
         private System.Windows.Forms.Label label10;
@@ -1250,20 +1168,15 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.NumericUpDown nUD202;
         private System.Windows.Forms.NumericUpDown nUD201;
-        private System.Windows.Forms.ComboBox combPeple;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton rabNo;
         private System.Windows.Forms.RadioButton rabYes;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton rabNv;
-        private System.Windows.Forms.RadioButton rabNan;
         private System.Windows.Forms.Button btnEidtUP;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radNOJiao;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -1287,5 +1200,6 @@
         private System.Windows.Forms.TextBox txtHasMoeny;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label labhasTotal;
     }
 }

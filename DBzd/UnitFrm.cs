@@ -141,11 +141,11 @@ namespace DBzd
         {
             if (listViewUnit.SelectedItems.Count > 0)
             {
-                string id = listViewUnit.SelectedItems[0].Text;
+                string unitid = listViewUnit.SelectedItems[0].Tag.ToString();
                 if (MessageBox.Show("确认删除？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    listViewUnit.SelectedItems[0].Remove();
-                    mf.DS.Unit.FindByUnitID(id).Delete();
+                    mf.DS.Unit.FindByUnitID(unitid).Delete();
+                    listViewUnit.SelectedItems[0].Remove();                   
                     mf.unitTap.Update(mf.DS.Unit);
 
                 }

@@ -24,6 +24,7 @@ namespace DBzd
 
         private void UnitInsertFrm_Load(object sender, EventArgs e)
         {
+
             var q = from p in mf.DS.Unit.AsEnumerable()
                     orderby p.UnitID
                     select p;
@@ -35,11 +36,29 @@ namespace DBzd
             combFatherCode.SelectedIndex = 0;
             combkind.SelectedIndex = 0;
         }
+        //根据类别找单位代码
+        private void ChangUnitSelect(string str)
+        {
+            combFatherCode.Items.Clear();
+            var q = from p in mf.DS.Unit.AsEnumerable()
+                    where p.UnitID.Contains(str)
+                    orderby p.UnitID
+
+                    select p;
+            foreach (var i in q)
+            {
+                combFatherCode.Items.Add(i.UnitID);
+              
+            }
+            combFatherCode.SelectedIndex = 0;
+          
+        }
 
 
 
         private void getMaxID(string k)
         {
+            combcode.Items.Clear();
             //取得最大id
             List<string> MaxID = (from p in combFatherCode.Items.Cast<string>() where p.Contains(k) select p).ToList<string>();
             //截取后3位加1合成
@@ -54,33 +73,47 @@ namespace DBzd
         //局:j   县直:z    乡镇\街道:t     企业:e    学校:s    协会:a    银行:b    医院:h
         private void combkind_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SelectChangeKind();
+        }
+        //变化时
+        private void SelectChangeKind()
+        {
             switch (combkind.Text)
             {
                 case "乡镇":
+                    ChangUnitSelect("t");
                     getMaxID("t");
                     break;
                 case "街道":
+                    ChangUnitSelect("t");
                     getMaxID("t");
                     break;
                 case "局":
+                    ChangUnitSelect("j");
                     getMaxID("j");
                     break;
                 case "县直":
+                    ChangUnitSelect("z");
                     getMaxID("z");
                     break;
                 case "企业":
+                    ChangUnitSelect("e");
                     getMaxID("e");
                     break;
                 case "学校":
+                    ChangUnitSelect("s");
                     getMaxID("s");
                     break;
                 case "协会":
+                    ChangUnitSelect("a");
                     getMaxID("a");
                     break;
                 case "银行":
+                    ChangUnitSelect("b");
                     getMaxID("b");
                     break;
                 case "医院":
+                    ChangUnitSelect("h");
                     getMaxID("h");
                     break;
                 default:
@@ -90,10 +123,7 @@ namespace DBzd
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (txtallname.Text!=""||txtshorname.Text!="")
-            {
-                btnSave_Click(sender, e);
-            }
+            
             this.DialogResult = DialogResult.OK;
         }
 
@@ -157,16 +187,15 @@ namespace DBzd
             }
 
 
-
+            mf.DS.Unit.AddUnitRow(ur);
             mf.unitTap.Update(mf.DS.Unit);
-            mf.DS.Unit.Dispose();
-            mf.unitTap.Fill(mf.DS.Unit);
-
-
+            //mf.DS.Unit.Dispose();
+            //mf.unitTap.Fill(mf.DS.Unit);
+            SelectChangeKind();
             mf.ReloadUnitFrmListView1();
-       
 
-            this.DialogResult = DialogResult.OK;
+            txtallname.Text = "";
+           
         }
     }
 }
