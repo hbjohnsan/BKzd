@@ -192,29 +192,43 @@ namespace DBzd
                 txtTruePrice.Text = txtTotalMoney.Text;
             }
 
+            /*
+             * 三种情况：
+             * 1、一次交清的。
+             * 2、只交一部分的
+             * 3、打欠条算一次交清的。
+             * 4、分多次交款的。
+             * 5、加载实际任务数。且修改金额时，记录值数据唯一。库中没有记录时，新境，有时修改任务数。
+             */
             //判断该单位是否已经完成了任务 IsOver='是' and 这个不有加了，因为有只交一部分的人
-            if (mf.DS.Receivables.Select("Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0)
-            {
-                var qi = from p in mf.DS.Receivables.AsEnumerable()
-                        where p.UnitID == unitID && p.Year == year
-                        select p;
-                foreach (var i in qi)
-                {
-                    if (i.IsOver == "是")
-                    {
-                        //显示已经完成
-                        rabYes.Checked = true;
-                        btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
-                    }
-                }
 
+            if (mf.DS.Receivables.Select("IsOver='是' and Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0)
+            {
+                //显示已经完成
+                rabYes.Checked = true;
+                btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
                 //从交款记录任务表中提取
                 LoadHasPay();
                 //加载真实任务数
 
             }
+            if (mf.DS.Receivables.Select("Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0)
+            {
+                //从交款记录任务表中提取
+                LoadHasPay();
+
+                //未完成状态
+                rabNo.Checked = true;
+
+                btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
+                btnEidtUP.Visible = false;
+                txtbz.Text = "";
+
+
+            }
             else
             {
+
                 //未交款单位
                 radNOJiao.Checked = true;
                 //未完成状态
@@ -227,18 +241,19 @@ namespace DBzd
                 labhasTotal.Text = "0";
                 //清空交款记录
                 listView1.Items.Clear();
-               //根据单位ID，自动加载单位分配的任务数量
+                //根据单位ID，自动加载单位分配的任务数量
                 LoadPaperTask();
-
             }
 
-            
+
             //TotalHasPayMoney();
             //显示计算总额
             CalcHasPayUnit();
+            //从交款记录任务表中提取实际刊数
+            LoadHasPayTask();
 
         }
-       
+
 
         //从交款记录任务表中提取
         private void LoadHasPayTask()
@@ -284,18 +299,12 @@ namespace DBzd
             var q = from p in mf.DS.Receivables.AsEnumerable()
                     where p.Year == year && p.UnitID == u.UnitID
                     orderby p.PayTime descending
-                    select new
-                    {
-                        id = p.ID,
-                        kind = p.PayKind,
-                        money = p.TrueMoney,
-                        time = p.PayTime
-                    };
+                    select p;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { i.kind, i.money.ToString(), i.time.ToShortDateString() });
-                money += i.money;
-                lv.Tag = i.id;
+                ListViewItem lv = new ListViewItem(new string[] { i.PayKind, i.TrueMoney.ToString(), i.PayTime.ToShortDateString(),i.IsOver });
+                money += i.TrueMoney;
+                lv.Tag = i.ID;
                 listView1.Items.Add(lv);
             }
             labhasTotal.Text = money.ToString();
@@ -314,6 +323,10 @@ namespace DBzd
                     radIOU.Checked = true;
                     break;
 
+            }
+            if (listView1.Items[0].SubItems["IsOver"].Text == "是")
+            {
+                rabYes.Checked = true;
             }
             //如果该单位交过款了，对应显示相当的内容。
             txtTruePrice.Text = labhasTotal.Text;

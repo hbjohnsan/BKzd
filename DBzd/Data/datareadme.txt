@@ -60,3 +60,4 @@ Receivables		收款:ID,UnitID,PayKind,TrueMoney,PayPeopleId,PayTime,IsOver,BZ,Year
 这时，应如果调整。
 在设计数据时Unit单位，设置了两个字段Istake,--是否有任务。IsPay--是否交款单位。
 当收款时，要保证，上级总单位的总量，和子单位的报刊量要同部增减。
+

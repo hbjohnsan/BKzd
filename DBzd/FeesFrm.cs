@@ -163,6 +163,7 @@ namespace DBzd
         private void CalcHasPayUnit()
         {
             mf.toolStripStatusLabel1.Text = "";
+            mf.toolStripStatusLabel2.Text = "";
             //总单位数：
 
             mf.toolStripStatusLabel1.Text += "现金总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='现金' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";

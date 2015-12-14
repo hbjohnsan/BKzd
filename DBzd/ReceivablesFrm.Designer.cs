@@ -120,6 +120,7 @@
             this.nUD50 = new System.Windows.Forms.NumericUpDown();
             this.nUD100 = new System.Windows.Forms.NumericUpDown();
             this.labhasTotal = new System.Windows.Forms.Label();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -553,7 +554,8 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader3});
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
@@ -1053,6 +1055,10 @@
             this.labhasTotal.TabIndex = 27;
             this.labhasTotal.Text = "label2";
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "完成状态";
+            // 
             // ReceivablesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1201,5 +1207,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label labhasTotal;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

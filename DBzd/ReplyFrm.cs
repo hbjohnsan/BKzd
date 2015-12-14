@@ -30,7 +30,7 @@ namespace DBzd
             rtbDoc.Clear();
             Unit u = combJKDW.SelectedItem as Unit;
             rtbDoc.Font = new Font("仿宋", 16, FontStyle.Regular);
-            //todo:编号设置
+           
             rtbDoc.Font = new Font("仿宋", 16, FontStyle.Regular);
             rtbDoc.Text = "第   号" + "\n";
             rtbDoc.Text += "\n";
