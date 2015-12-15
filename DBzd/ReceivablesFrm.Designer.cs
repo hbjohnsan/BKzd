@@ -75,6 +75,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -120,7 +121,7 @@
             this.nUD50 = new System.Windows.Forms.NumericUpDown();
             this.nUD100 = new System.Windows.Forms.NumericUpDown();
             this.labhasTotal = new System.Windows.Forms.Label();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.butSaveTruePaper = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -582,6 +583,10 @@
             // 
             this.columnHeader4.Text = "交款时间";
             this.columnHeader4.Width = 120;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "完成状态";
             // 
             // contextMenuStrip1
             // 
@@ -1055,15 +1060,22 @@
             this.labhasTotal.TabIndex = 27;
             this.labhasTotal.Text = "label2";
             // 
-            // columnHeader3
+            // butSaveTruePaper
             // 
-            this.columnHeader3.Text = "完成状态";
+            this.butSaveTruePaper.Location = new System.Drawing.Point(538, 388);
+            this.butSaveTruePaper.Name = "butSaveTruePaper";
+            this.butSaveTruePaper.Size = new System.Drawing.Size(123, 23);
+            this.butSaveTruePaper.TabIndex = 28;
+            this.butSaveTruePaper.Text = "保存或修改任务量";
+            this.butSaveTruePaper.UseVisualStyleBackColor = true;
+            this.butSaveTruePaper.Click += new System.EventHandler(this.butSaveTruePaper_Click);
             // 
             // ReceivablesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 562);
+            this.Controls.Add(this.butSaveTruePaper);
             this.Controls.Add(this.labhasTotal);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labTal);
@@ -1208,5 +1220,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label labhasTotal;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button butSaveTruePaper;
     }
 }

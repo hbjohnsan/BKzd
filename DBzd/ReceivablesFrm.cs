@@ -33,8 +33,8 @@ namespace DBzd
             LoadYear();
             //加载单位类别
             LoadUnitKind();
-            //交款单位 通过单位类别已经加载了 类别个数次了！！！初始为1次。
-            //  PayUnit();
+            //交款单位 通过单位类别已经加载了 类别个数次了！！！初始为1次。           
+            //显示计算总额
             CalcHasPayUnit();
         }
         //交款单位
@@ -201,29 +201,47 @@ namespace DBzd
              * 5、加载实际任务数。且修改金额时，记录值数据唯一。库中没有记录时，新境，有时修改任务数。
              */
             //判断该单位是否已经完成了任务 IsOver='是' and 这个不有加了，因为有只交一部分的人
+            bool HasPay = mf.DS.Receivables.Select("Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0;
 
-            if (mf.DS.Receivables.Select("IsOver='是' and Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0)
+            if (HasPay)
             {
-                //显示已经完成
-                rabYes.Checked = true;
-                btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
-                //从交款记录任务表中提取
-                LoadHasPay();
-                //加载真实任务数
+                //判断是否有已经完成的记录，因有多次交款
+                bool IsOver = mf.DS.Receivables.Select("IsOver='是' and Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0;
 
-            }
-            if (mf.DS.Receivables.Select("Year='" + year + "' and UnitID='" + unitID + "'").Count() > 0)
-            {
-                //从交款记录任务表中提取
-                LoadHasPay();
+                if (IsOver)
+                {
+                    //显示已经完成
+                    rabYes.Checked = true;
+                    btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
+                    btnEidtUP.Visible = false;
 
-                //未完成状态
-                rabNo.Checked = true;
+                }
+                else
+                {
+                    //未完成状态
+                    rabNo.Checked = true;
+                    btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
+                    //从交款记录任务表中提取
 
-                btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
-                btnEidtUP.Visible = false;
+                }
+                //多次交款，把每次记录备注的内容，加到列表中。
                 txtbz.Text = "";
+                var qhas = from p in mf.DS.Receivables.AsEnumerable()
+                           where p.IsOver == "是" && p.Year == year && p.UnitID == unitID
+                           select p;
+                foreach (var item in qhas)
+                {
+                    if (item.BZ != "")
+                    {
+                        txtbz.Text += item.BZ + "\n";
+                    }
+                }
 
+                LoadHasPay();
+                //从交款记录任务表中提取实际刊数
+                LoadHasPayTask();
+                //
+                TotalHasPayMoney();
 
             }
             else
@@ -236,6 +254,8 @@ namespace DBzd
 
                 btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
                 btnEidtUP.Visible = false;
+                //如果该单位未交款，显示应收总额 初始时已经加载了。
+                //txtTruePrice.Text = txtTotalMoney.Text;
                 txtbz.Text = "";
                 //已交款总额清0
                 labhasTotal.Text = "0";
@@ -245,33 +265,19 @@ namespace DBzd
                 LoadPaperTask();
             }
 
-
-            //TotalHasPayMoney();
-            //显示计算总额
-            CalcHasPayUnit();
-            //从交款记录任务表中提取实际刊数
-            LoadHasPayTask();
-
         }
 
-
-        //从交款记录任务表中提取
+        //有交款记录的单位，需要加载真实的订阅的报刊数，不能显示计划数了。
+        //其次，每次提交，或是保存二次交款时，真实数据不能新增，只可修改。       
         private void LoadHasPayTask()
         {
             Unit u = combJKDW.SelectedItem as Unit;
-            //加载真实金额
-            var m = from p in mf.DS.Receivables.AsEnumerable()
-                    where p.UnitID == u.UnitID && p.IsOver == "是"
-                    select p;
-            foreach (var i in m)
-            {
-                txtTruePrice.Text = i.TrueMoney.ToString();
-            }
-            txtHasMoeny.Text = txtTruePrice.Text;
+            string unitID = u.UnitID;
+            string year = toolStripComboBox1.SelectedItem.ToString();
 
             //还需要加载，单位的实际刊数
             var q = from p in mf.DS.TruePaper.AsEnumerable()
-                    where p.UnitID == u.UnitID
+                    where p.UnitID == unitID && p.Year == year
                     select p;
             foreach (var i in q)
             {
@@ -285,6 +291,7 @@ namespace DBzd
                 nUD203.Value = i.P203;
                 nUD301.Value = i.P301;
                 nUD302.Value = i.P302;
+                txtHasMoeny.Text = i.TrueMoney.ToString();
             }
         }
 
@@ -302,7 +309,7 @@ namespace DBzd
                     select p;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { i.PayKind, i.TrueMoney.ToString(), i.PayTime.ToShortDateString(),i.IsOver });
+                ListViewItem lv = new ListViewItem(new string[] { i.PayKind, i.TrueMoney.ToString(), i.PayTime.ToShortDateString(), i.IsOver });
                 money += i.TrueMoney;
                 lv.Tag = i.ID;
                 listView1.Items.Add(lv);
@@ -324,10 +331,7 @@ namespace DBzd
                     break;
 
             }
-            if (listView1.Items[0].SubItems["IsOver"].Text == "是")
-            {
-                rabYes.Checked = true;
-            }
+
             //如果该单位交过款了，对应显示相当的内容。
             txtTruePrice.Text = labhasTotal.Text;
         }
@@ -354,6 +358,7 @@ namespace DBzd
                 nUD301.Value = i.P301;
                 nUD302.Value = i.P302;
             }
+
         }
 
 
@@ -399,11 +404,7 @@ namespace DBzd
         //记录真实报刊数到库--新增
         private void SaveMoenyToDB()
         {
-            //if (combPeple.Text == "")
-            //{
-            //    MessageBox.Show("请输入或选择交款人！");
-            //    return;
-            //}
+            
             Unit u = combJKDW.SelectedItem as Unit;
             BKDataSet.ReceivablesRow rr = mf.DS.Receivables.NewReceivablesRow();
             rr.UnitID = u.UnitID;
@@ -417,48 +418,8 @@ namespace DBzd
 
             }
 
-
             rr.TrueMoney = double.Parse(txtTruePrice.Text.Trim());
-            //rr.PayPeoPleID;
-            #region 添加人的先不做了。
-            // if (combPeple.Text != "")
-            // {
-            //     int flagID = 0;
-            //     var q = from p in mf.DS.People.AsEnumerable()
-            //             where p.UnitID == u.UnitID
-            //             select p;
-            //     foreach (var i in q)
-            //     {
-            //         if (i.Name == combPeple.Text.Trim() && i.Phone == txtDraweeTel.Text.Trim())
-            //         {
-            ////todo:             flagID = i.PeopleID;
-            //         }
-            //     }
-            //     if (flagID > 0)
-            //     {
-            //         rr.PayPeopleID = flagID;
-            //     }
-            //     else
-            //     {
-            //         string sex = "";
-            //         if (rabNan.Checked == true)
-            //         {
-            //             sex = "男";
-            //         }
-            //         else
-            //         {
-            //             sex = "女";
-            //         }
-            //         //保存交款人信息到人员库
-            //         //增加一个新地址的记录
-            //         mf.peopleTap.Insert(u.UnitID, combPeple.Text.Trim(), sex, "", txtDraweeTel.Text.Trim(), "", "", "", "", "", 1);
-            //         mf.DS.People.Dispose();
-            //         mf.peopleTap.Fill(mf.DS.People);
-            //         rr.PayPeopleID = mf.DS.People.AsEnumerable().Select(t => t.Field<int>("PeopleID")).Max();
-            //     }
-
-            // } 
-            #endregion
+       
 
             rr.PayTime = dateTimePicker1.Value;
             //rr.IsOver;
@@ -487,46 +448,77 @@ namespace DBzd
         {
             Unit u = new Unit();
             u = combJKDW.SelectedItem as Unit;
-            BKDataSet.TruePaperRow tr = mf.DS.TruePaper.NewTruePaperRow();
-            tr.UnitID = u.UnitID;
-            tr.P101 = Convert.ToInt32(nUD101.Value);
-            tr.P102 = Convert.ToInt32(nUD102.Value);
-            tr.P103 = Convert.ToInt32(nUD103.Value);
-            tr.P104 = Convert.ToInt32(nUD104.Value);
-            tr.P105 = Convert.ToInt32(nUD105.Value);
-            tr.P201 = Convert.ToInt32(nUD201.Value);
-            tr.P202 = Convert.ToInt32(nUD202.Value);
-            tr.P203 = Convert.ToInt32(nUD203.Value);
-            tr.P301 = Convert.ToInt32(nUD301.Value);
-            tr.P302 = Convert.ToInt32(nUD302.Value);
-            tr.TrueMoney = Convert.ToDouble(txtTruePrice.Text);
-            if (rabYes.Checked == true)
+            string year = toolStripComboBox1.SelectedItem.ToString();
+            //需要判断是新增还是修改
+            bool haspay = mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "' and Year='" + year + "'").Count() > 0;
+            if (haspay)
             {
-                tr.IsOver = "是";
+               // mf.DS.TruePaper.Where(id,i=>i.u);
+                int ID = 0;
+                var q = (from p in mf.DS.TruePaper.AsEnumerable()
+                         where p.UnitID == u.UnitID && p.Year == year
+                         select p.ID);
+                foreach (var i in q)
+                {
+                    ID = i;
+                }
+                //找到唯一ID，根据ID找到该行。然后修改数据。
+                BKDataSet.TruePaperRow tr = mf.DS.TruePaper.FindByID(ID);
+
+                tr.P101 = Convert.ToInt32(nUD101.Value);
+                tr.P102 = Convert.ToInt32(nUD102.Value);
+                tr.P103 = Convert.ToInt32(nUD103.Value);
+                tr.P104 = Convert.ToInt32(nUD104.Value);
+                tr.P105 = Convert.ToInt32(nUD105.Value);
+                tr.P201 = Convert.ToInt32(nUD201.Value);
+                tr.P202 = Convert.ToInt32(nUD202.Value);
+                tr.P203 = Convert.ToInt32(nUD203.Value);
+                tr.P301 = Convert.ToInt32(nUD301.Value);
+                tr.P302 = Convert.ToInt32(nUD302.Value);
+                tr.TrueMoney = Convert.ToDouble(txtTruePrice.Text);
+                if (rabYes.Checked == true)
+                {
+                    tr.IsOver = "是";
+                }
+                else
+                {
+                    tr.IsOver = "否";
+                }
+                tr.Year = toolStripComboBox1.SelectedItem.ToString();
+                mf.truepaperTap.Update(tr);
             }
             else
             {
-                tr.IsOver = "否";
+                BKDataSet.TruePaperRow tr = mf.DS.TruePaper.NewTruePaperRow();
+                tr.UnitID = u.UnitID;
+                tr.P101 = Convert.ToInt32(nUD101.Value);
+                tr.P102 = Convert.ToInt32(nUD102.Value);
+                tr.P103 = Convert.ToInt32(nUD103.Value);
+                tr.P104 = Convert.ToInt32(nUD104.Value);
+                tr.P105 = Convert.ToInt32(nUD105.Value);
+                tr.P201 = Convert.ToInt32(nUD201.Value);
+                tr.P202 = Convert.ToInt32(nUD202.Value);
+                tr.P203 = Convert.ToInt32(nUD203.Value);
+                tr.P301 = Convert.ToInt32(nUD301.Value);
+                tr.P302 = Convert.ToInt32(nUD302.Value);
+                tr.TrueMoney = Convert.ToDouble(txtTruePrice.Text);
+                if (rabYes.Checked == true)
+                {
+                    tr.IsOver = "是";
+                }
+                else
+                {
+                    tr.IsOver = "否";
+                }
+                tr.Year = toolStripComboBox1.SelectedItem.ToString();
+
+                mf.DS.TruePaper.AddTruePaperRow(tr);
+                mf.truepaperTap.Update(mf.DS.TruePaper);
+                //以前这所以用这种删除，再填充表的原因是，ID不能自增，在DataSet中可以设置ID的自增。
+                //mf.DS.TruePaper.Dispose();
+                //mf.truepaperTap.Fill(mf.DS.TruePaper);
             }
-            tr.Year = toolStripComboBox1.SelectedItem.ToString();
-
-            mf.DS.TruePaper.AddTruePaperRow(tr);
-            mf.truepaperTap.Update(mf.DS.TruePaper);
-            mf.DS.TruePaper.Dispose();
-            mf.truepaperTap.Fill(mf.DS.TruePaper);
-
             btnSave.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
-            //自动下一单位,最大值时不能加
-            //if (combJKDW.SelectedIndex == combJKDW.Items.Count - 1)
-            //{
-            //    btnSave.Enabled = txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = false;
-            //}
-            //else
-            //{
-            //    combJKDW.SelectedIndex = combJKDW.SelectedIndex + 1;
-            //    btnSave.Enabled = txtDraweeTel.Enabled = combPeple.Enabled = txtTruePrice.Enabled = dateTimePicker1.Enabled = true;
-            //}
-
 
         }
         #endregion
@@ -864,9 +856,6 @@ namespace DBzd
         //可以手工到筛选单位到新年度任务。
         // 复制中，把计划任务金额列去掉，把交款方式，定为现金。把完成状态定为否。年度为新年度。
 
-
-
-
         //计算已交款单位。
         private void CalcHasPayUnit()
         {
@@ -885,6 +874,11 @@ namespace DBzd
             mf.toolStripStatusLabel1.Text += "    未交：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='未交' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 
 
+        }
+        // 记录真实报刊数量及金额到库
+        private void butSaveTruePaper_Click(object sender, EventArgs e)
+        {
+            SavePapetNumberTODB();
         }
     }
 }
