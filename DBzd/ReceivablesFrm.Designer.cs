@@ -1047,6 +1047,11 @@
             // nUD100
             // 
             this.nUD100.Location = new System.Drawing.Point(44, 55);
+            this.nUD100.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.nUD100.Name = "nUD100";
             this.nUD100.Size = new System.Drawing.Size(62, 21);
             this.nUD100.TabIndex = 0;

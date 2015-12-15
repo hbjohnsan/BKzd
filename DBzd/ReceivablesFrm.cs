@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using System.Threading;
 
 namespace DBzd
 {
@@ -264,7 +265,13 @@ namespace DBzd
                 //根据单位ID，自动加载单位分配的任务数量
                 LoadPaperTask();
             }
+            //计算币值
+            txtHasMoeny.Text = txtTruePrice.Text;
+            this.Invoke(new ThreadStart(delegate
+             {
+                 CalcalMoney();
 
+             }));
         }
 
         //有交款记录的单位，需要加载真实的订阅的报刊数，不能显示计划数了。
@@ -404,7 +411,7 @@ namespace DBzd
         //记录真实报刊数到库--新增
         private void SaveMoenyToDB()
         {
-            
+
             Unit u = combJKDW.SelectedItem as Unit;
             BKDataSet.ReceivablesRow rr = mf.DS.Receivables.NewReceivablesRow();
             rr.UnitID = u.UnitID;
@@ -419,7 +426,7 @@ namespace DBzd
             }
 
             rr.TrueMoney = double.Parse(txtTruePrice.Text.Trim());
-       
+
 
             rr.PayTime = dateTimePicker1.Value;
             //rr.IsOver;
@@ -453,7 +460,7 @@ namespace DBzd
             bool haspay = mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "' and Year='" + year + "'").Count() > 0;
             if (haspay)
             {
-               // mf.DS.TruePaper.Where(id,i=>i.u);
+                // mf.DS.TruePaper.Where(id,i=>i.u);
                 int ID = 0;
                 var q = (from p in mf.DS.TruePaper.AsEnumerable()
                          where p.UnitID == u.UnitID && p.Year == year
@@ -779,7 +786,7 @@ namespace DBzd
         //手动输入实收金额时
         private void txtHasMoeny_TextChanged(object sender, EventArgs e)
         {
-            nUD100.Value = nUD50.Value = nUD20.Value = nUD10.Value = nUD5.Value = nUD1.Value = nUD05.Value = nUD01.Value = 0;
+            //nUD100.Value = nUD50.Value = nUD20.Value = nUD10.Value = nUD5.Value = nUD1.Value = nUD05.Value = nUD01.Value = 0;
             txtBackMoney.Text = "";
             //手动输入时要决断为数字
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtHasMoeny.Text, @"^([0-9]*)\.?[0-9]*$"))
@@ -789,65 +796,34 @@ namespace DBzd
                 return;
             }
 
-
+            #region 计算钱币
+            CalcalMoney();
+            #endregion
             double money = Convert.ToDouble(txtHasMoeny.Text.Trim());
             double backmoeny = money - Convert.ToDouble(txtTruePrice.Text.Trim());
             txtBackMoney.Text = backmoeny.ToString("0.0");
 
-            #region 计算钱币
-
-
-            while (money > 99.999)
-            {
-                nUD100.Value = nUD100.Value + 1;
-                money -= 100.0;
-            }
-
-            while (money > 49.999)
-            {
-                nUD50.Value++;
-                money -= 50.0;
-            }
-            while (money > 19.999)
-            {
-                nUD20.Value++;
-                money -= 20.0;
-            }
-            while (money > 9.999)
-            {
-                nUD10.Value++;
-                money -= 10.0;
-            }
-
-            while (money > 4.999)
-            {
-                nUD5.Value++;
-                money -= 5.0;
-            }
-
-            while (money > .999)
-            {
-                nUD1.Value++;
-                money -= 1.0;
-            }
-
-            while (money > .499)
-            {
-                nUD05.Value++;
-                money -= .5;
-            }
-
-            while (money > .099)
-            {
-                nUD01.Value++;
-                money -= .1;
-            }
 
 
 
-            #endregion
+        }
 
+        private void CalcalMoney()
+        {
+            nUD100.Value = nUD50.Value = nUD20.Value = nUD10.Value = nUD5.Value = nUD1.Value = nUD05.Value = nUD01.Value = 0;
+           
+            decimal money = Convert.ToDecimal(txtHasMoeny.Text.Trim());
 
+            nUD100.Value = Math.Floor(money / 100); money = money % 100;
+            nUD50.Value = Math.Floor(money / 50); money = money % 50;
+            nUD20.Value = Math.Floor(money / 20); money = money % 20;
+            nUD10.Value = Math.Floor(money / 10); money = money % 10;
+            nUD5.Value = Math.Floor(money / 5); money = money % 5;
+            nUD1.Value = Math.Floor(money / 1); money = money % 1;
+            nUD05.Value = Math.Floor(money*10 /5); money = (money*10 % 5)/10;
+            nUD01.Value = Math.Floor(money * 10 / 1);
+
+           
         }
 
 
