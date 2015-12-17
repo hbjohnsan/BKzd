@@ -27,9 +27,21 @@ namespace DBzd
         private void UnitFrm_Load(object sender, EventArgs e)
         {
             listByKind();
-            listviewUnitRelaod();
+           
             //  listviewPostRelaod();
+            //添加新年度列表。
+            AddNewYearList();
 
+            listviewUnitRelaod();
+        }
+        //添加新年度列表。
+        private void AddNewYearList()
+        {
+            for (int i = 2000; i < 2101; i++)
+            {
+                tscmbYear.Items.Add(i.ToString());
+            }
+            tscmbYear.SelectedItem = (DateTime.Now.Year + 1).ToString();
         }
         //单位类别
         private void listByKind()
@@ -58,14 +70,16 @@ namespace DBzd
         //加载单位表
         public void listviewUnitRelaod()
         {
+            string year = tscmbYear.SelectedItem.ToString();
             listViewUnit.Items.Clear();
             var q = from un in mf.DS.Unit.AsEnumerable()
-                    orderby un.UnitID
+                    where un.Year == year
+                    orderby un.UnitID                     
                     select un;
             foreach (var i in q)
             {
                 ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
-                lv.Tag = i.UnitID;
+                lv.Tag = i.ID;
                 listViewUnit.Items.Add(lv);
             }
             //显示行号
@@ -118,7 +132,7 @@ namespace DBzd
         {
             if (listViewUnit.SelectedItems.Count > 0)
             {
-                string id = listViewUnit.SelectedItems[0].Tag.ToString();
+                int id =Int32.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
                 UnitEidtFrm uef = new UnitEidtFrm(mf, id);
                 uef.ShowDialog();
                 
@@ -141,10 +155,10 @@ namespace DBzd
         {
             if (listViewUnit.SelectedItems.Count > 0)
             {
-                string unitid = listViewUnit.SelectedItems[0].Tag.ToString();
+                int id =Int32.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
                 if (MessageBox.Show("确认删除？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    mf.DS.Unit.FindByUnitID(unitid).Delete();
+                    mf.DS.Unit.FindByID(id).Delete();
                     listViewUnit.SelectedItems[0].Remove();                   
                     mf.unitTap.Update(mf.DS.Unit);
 
@@ -284,7 +298,7 @@ namespace DBzd
                 if (namecode.StartsWith(upper))
                 {
                     ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
-                    lv.Tag = i.UnitID;
+                    lv.Tag = i.ID;
                     listViewUnit.Items.Add(lv);
                 }
             }
@@ -332,7 +346,7 @@ namespace DBzd
             foreach (var i in q)
             {
                 ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
-                lv.Tag = i.UnitID;
+                lv.Tag = i.ID;
                 listViewUnit.Items.Add(lv);
             }
             //显示序号
@@ -371,7 +385,7 @@ namespace DBzd
             foreach (var i in q)
             {
                 ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
-                lv.Tag = i.UnitID;
+                lv.Tag = i.ID;
                 listViewUnit.Items.Add(lv);
             }
             //显示序号

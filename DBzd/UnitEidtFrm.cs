@@ -12,16 +12,16 @@ namespace DBzd
     public partial class UnitEidtFrm : Form
     {
         private MainFrm mf;
-        private string unitid;
+        private int ID;
         public UnitEidtFrm()
         {
             InitializeComponent();
         }
-        public UnitEidtFrm(MainFrm f, string id)
+        public UnitEidtFrm(MainFrm f, int id)
         {
             InitializeComponent();
             mf = f;
-            unitid = id;
+            ID = id;
         }
         //窗口加载
         private void UnitEidtFrm_Load(object sender, EventArgs e)
@@ -46,14 +46,16 @@ namespace DBzd
         private void showbyId()
         {
             var q = from p in mf.DS.Unit.AsEnumerable()
-                    where p.UnitID == unitid
+                    where p.ID == ID
                     select p;
             foreach (var i in q)
             {
-                combcode.Text = unitid;
+                labID.Text = ID.ToString();
+                combcode.Text = mf.DS.Unit.FindByID(ID).UnitID;
                 txtallname.Text = i.AllName;
                 txtshorname.Text = i.ShortName;
                 combkind.Text = i.Kind;
+                txtYear.Text = i.Year;
                 txtTel.Text = i.Tel;
                 txtFax.Text = i.Fax;
                 rabYes.Checked = (i.Istake.Equals("是")) ? true : false;
@@ -90,8 +92,9 @@ namespace DBzd
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            BKDataSet.UnitRow ur = mf.DS.Unit.FindByUnitID(combcode.SelectedItem.ToString());
+            BKDataSet.UnitRow ur = mf.DS.Unit.FindByID(Int32.Parse(labID.Text));
             ur.UnitID = combcode.Text.Trim();
+            ur.UnitParantTaskID = txtUnitParantTaskID.Text;
             ur.AllName = txtallname.Text.Trim();
             ur.ShortName = txtshorname.Text.Trim();
             ur.Tel = txtTel.Text.Trim();
@@ -134,29 +137,19 @@ namespace DBzd
                 {
                     //增加一个新地址的记录
                     mf.addressTap.Insert(combTwon.Text.Trim(), combArea.Text.Trim());
-                    mf.DS.Address.Dispose();
-                    mf.addressTap.Fill(mf.DS.Address);
+                    //mf.DS.Address.Dispose();
+                    //mf.addressTap.Fill(mf.DS.Address);
                     ur.AddressID = mf.DS.Address.AsEnumerable().Select(t => t.Field<int>("ID")).Max();
                 }
             }
             
 
             mf.unitTap.Update(mf.DS.Unit);
-            mf.DS.Unit.Dispose();
-            mf.unitTap.Fill(mf.DS.Unit);
-            mf.ReloadUnitFrmListView1();
-            //todo:到最后时出错。
-            if (combcode.Items.Count > 0)
-            {
-                combcode.SelectedIndex = combcode.SelectedIndex + 1;
-            }
-            else
-            {
-                txtTel.Text = "";
-                txtFax.Text = "";
-            }
+            //mf.DS.Unit.Dispose();
+            //mf.unitTap.Fill(mf.DS.Unit);
+            //mf.ReloadUnitFrmListView1();
 
-
+            this.DialogResult = DialogResult.OK;
         }
 
         private void txtTel_TextChanged(object sender, EventArgs e)
@@ -164,12 +157,7 @@ namespace DBzd
             txtFax.Text = txtTel.Text;
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-           
-            this.DialogResult = DialogResult.OK;
-        }
-
+       
 
     }
 }

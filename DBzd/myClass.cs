@@ -31,7 +31,9 @@ namespace DBzd
     }
     public class Unit
     {
+        public int ID { get; set; }
         public string UnitID { get; set; }
+        public string UnitParantTaskID { get; set; }
         public string AllName { get; set; }
         public string ShortName { get; set; }
         public string Tel { get; set; }

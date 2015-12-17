@@ -81,6 +81,8 @@
             this.增加单位人员ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.修改人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除人员信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.tscmbYear = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -106,6 +108,8 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSeparator2,
+            this.toolStripLabel3,
+            this.tscmbYear,
             this.toolStripLabel2,
             this.tscombKind,
             this.toolStripLabel1,
@@ -204,8 +208,8 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(44, 22);
-            this.toolStripLabel2.Text = "类别：";
+            this.toolStripLabel2.Size = new System.Drawing.Size(68, 22);
+            this.toolStripLabel2.Text = "单位类别：";
             // 
             // tscombKind
             // 
@@ -517,6 +521,18 @@
             this.删除人员信息ToolStripMenuItem.Text = "删除人员信息";
             this.删除人员信息ToolStripMenuItem.Click += new System.EventHandler(this.删除人员信息ToolStripMenuItem_Click);
             // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(35, 22);
+            this.toolStripLabel3.Text = "年度:";
+            // 
+            // tscmbYear
+            // 
+            this.tscmbYear.AutoSize = false;
+            this.tscmbYear.Name = "tscmbYear";
+            this.tscmbYear.Size = new System.Drawing.Size(55, 25);
+            // 
             // UnitFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -597,5 +613,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ToolStripMenuItem 增加单位职务ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 增加单位人员ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripComboBox tscmbYear;
     }
 }

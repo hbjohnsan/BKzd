@@ -22,17 +22,16 @@ namespace DBzd
 
         public BKDataSetTableAdapters.PaperTableAdapter paperTap;
         public BKDataSetTableAdapters.PaperTaskTableAdapter paperTaskTap;
-        public BKDataSetTableAdapters.PaperShareTableAdapter paperShareTap;
+       
 
         public BKDataSetTableAdapters.FeesTableAdapter feesTap;
 
         public BKDataSetTableAdapters.PeopleTableAdapter peopleTap;
         public BKDataSetTableAdapters.PosterTableAdapter posterTap;
-        public BKDataSetTableAdapters.PocketTableAdapter pocketTap;
+      
 
         public BKDataSetTableAdapters.ReceivablesTableAdapter receivablesTap;
-        public BKDataSetTableAdapters.RemittanceTableAdapter remittanceTap;
-        public BKDataSetTableAdapters.TrueNumTableAdapter trueNumTap;
+   
         public BKDataSetTableAdapters.AddressTableAdapter addressTap;
 
         public BKDataSetTableAdapters.TruePaperTableAdapter truepaperTap;
@@ -64,15 +63,15 @@ namespace DBzd
             unitTap = new BKDataSetTableAdapters.UnitTableAdapter();
             unitpostTap = new BKDataSetTableAdapters.UnitPostTableAdapter();
             paperTap = new BKDataSetTableAdapters.PaperTableAdapter();
-            paperShareTap = new BKDataSetTableAdapters.PaperShareTableAdapter();
+           
             paperTaskTap = new BKDataSetTableAdapters.PaperTaskTableAdapter();
             peopleTap = new BKDataSetTableAdapters.PeopleTableAdapter();
-            pocketTap = new BKDataSetTableAdapters.PocketTableAdapter();
+           
             posterTap = new BKDataSetTableAdapters.PosterTableAdapter();
-            remittanceTap = new BKDataSetTableAdapters.RemittanceTableAdapter();
+          
             receivablesTap = new BKDataSetTableAdapters.ReceivablesTableAdapter();
             feesTap = new BKDataSetTableAdapters.FeesTableAdapter();
-            trueNumTap = new BKDataSetTableAdapters.TrueNumTableAdapter();
+        
             addressTap = new BKDataSetTableAdapters.AddressTableAdapter();
             truepaperTap =new BKDataSetTableAdapters.TruePaperTableAdapter();
 
@@ -80,15 +79,15 @@ namespace DBzd
             unitpostTap.Fill(DS.UnitPost);
             paperTap.Fill(DS.Paper);
             paperTaskTap.Fill(DS.PaperTask);
-            paperShareTap.Fill(DS.PaperShare);
+         
             peopleTap.Fill(DS.People);
-            pocketTap.Fill(DS.Pocket);
+          
             posterTap.Fill(DS.Poster);
-            remittanceTap.Fill(DS.Remittance);
+          
             receivablesTap.Fill(DS.Receivables);
             feesTap.Fill(DS.Fees);
             addressTap.Fill(DS.Address);
-            trueNumTap.Fill(DS.TrueNum);
+          
             truepaperTap.Fill(DS.TruePaper);
         }
 

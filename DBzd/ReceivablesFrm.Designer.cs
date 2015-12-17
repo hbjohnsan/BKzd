@@ -175,9 +175,11 @@
             // 
             // toolStripComboBox1
             // 
+            this.toolStripComboBox1.AutoSize = false;
             this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox1.DropDownWidth = 35;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(55, 25);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // toolStripSeparator1
@@ -188,8 +190,8 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(32, 22);
-            this.toolStripLabel2.Text = "单位";
+            this.toolStripLabel2.Size = new System.Drawing.Size(59, 22);
+            this.toolStripLabel2.Text = "单位类别:";
             // 
             // toolStripComboBox3
             // 
@@ -330,7 +332,7 @@
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(75, 23);
             this.btnUp.TabIndex = 8;
-            this.btnUp.Text = "↑";
+            this.btnUp.Text = "↓";
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 

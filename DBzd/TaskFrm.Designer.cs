@@ -49,9 +49,9 @@
             this.unit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.labUnitID = new System.Windows.Forms.Label();
             this.labUnit = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtPaperMoney = new System.Windows.Forms.TextBox();
             this.txtComnyMoney = new System.Windows.Forms.TextBox();
@@ -287,9 +287,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.labUnitID);
             this.groupBox4.Controls.Add(this.labUnit);
-            this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Controls.Add(this.txtPaperMoney);
             this.groupBox4.Controls.Add(this.txtComnyMoney);
@@ -325,6 +325,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "重点党刊";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(198, 17);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 12);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "单位代码：";
+            // 
             // labUnitID
             // 
             this.labUnitID.AutoSize = true;
@@ -339,18 +348,9 @@
             this.labUnit.AutoSize = true;
             this.labUnit.Location = new System.Drawing.Point(108, 17);
             this.labUnit.Name = "labUnit";
-            this.labUnit.Size = new System.Drawing.Size(47, 12);
+            this.labUnit.Size = new System.Drawing.Size(41, 12);
             this.labUnit.TabIndex = 20;
-            this.labUnit.Text = "label21";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(219, 17);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(29, 12);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "ID：";
+            this.labUnit.Text = "单位名";
             // 
             // label19
             // 
@@ -363,7 +363,7 @@
             // 
             // txtPaperMoney
             // 
-            this.txtPaperMoney.Location = new System.Drawing.Point(80, 196);
+            this.txtPaperMoney.Location = new System.Drawing.Point(80, 179);
             this.txtPaperMoney.Name = "txtPaperMoney";
             this.txtPaperMoney.Size = new System.Drawing.Size(87, 21);
             this.txtPaperMoney.TabIndex = 17;
@@ -372,7 +372,7 @@
             // 
             // txtComnyMoney
             // 
-            this.txtComnyMoney.Location = new System.Drawing.Point(254, 196);
+            this.txtComnyMoney.Location = new System.Drawing.Point(254, 179);
             this.txtComnyMoney.Name = "txtComnyMoney";
             this.txtComnyMoney.Size = new System.Drawing.Size(79, 21);
             this.txtComnyMoney.TabIndex = 16;
@@ -381,7 +381,7 @@
             // 
             // btnEditTask
             // 
-            this.btnEditTask.Location = new System.Drawing.Point(237, 224);
+            this.btnEditTask.Location = new System.Drawing.Point(237, 207);
             this.btnEditTask.Name = "btnEditTask";
             this.btnEditTask.Size = new System.Drawing.Size(75, 23);
             this.btnEditTask.TabIndex = 10;
@@ -392,7 +392,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(38, 44);
+            this.label9.Location = new System.Drawing.Point(40, 41);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 4;
@@ -400,7 +400,7 @@
             // 
             // nUD101
             // 
-            this.nUD101.Location = new System.Drawing.Point(110, 42);
+            this.nUD101.Location = new System.Drawing.Point(112, 39);
             this.nUD101.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -415,7 +415,7 @@
             // 
             // nUD102
             // 
-            this.nUD102.Location = new System.Drawing.Point(110, 70);
+            this.nUD102.Location = new System.Drawing.Point(112, 67);
             this.nUD102.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -431,7 +431,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(196, 156);
+            this.label11.Location = new System.Drawing.Point(198, 153);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 12);
             this.label11.TabIndex = 4;
@@ -440,7 +440,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 200);
+            this.label5.Location = new System.Drawing.Point(14, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 10;
@@ -448,7 +448,7 @@
             // 
             // nUD103
             // 
-            this.nUD103.Location = new System.Drawing.Point(110, 98);
+            this.nUD103.Location = new System.Drawing.Point(112, 95);
             this.nUD103.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -464,7 +464,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(183, 200);
+            this.label6.Location = new System.Drawing.Point(183, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 12;
@@ -473,7 +473,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(172, 128);
+            this.label10.Location = new System.Drawing.Point(174, 125);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 12);
             this.label10.TabIndex = 4;
@@ -482,7 +482,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 229);
+            this.label8.Location = new System.Drawing.Point(14, 212);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 14;
@@ -490,7 +490,7 @@
             // 
             // nUD104
             // 
-            this.nUD104.Location = new System.Drawing.Point(110, 126);
+            this.nUD104.Location = new System.Drawing.Point(112, 123);
             this.nUD104.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -506,7 +506,7 @@
             // labTotalMoney
             // 
             this.labTotalMoney.AutoSize = true;
-            this.labTotalMoney.Location = new System.Drawing.Point(80, 229);
+            this.labTotalMoney.Location = new System.Drawing.Point(80, 212);
             this.labTotalMoney.Name = "labTotalMoney";
             this.labTotalMoney.Size = new System.Drawing.Size(11, 12);
             this.labTotalMoney.TabIndex = 11;
@@ -515,7 +515,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(184, 100);
+            this.label12.Location = new System.Drawing.Point(186, 97);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 12);
             this.label12.TabIndex = 4;
@@ -523,7 +523,7 @@
             // 
             // nUD105
             // 
-            this.nUD105.Location = new System.Drawing.Point(110, 154);
+            this.nUD105.Location = new System.Drawing.Point(112, 151);
             this.nUD105.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -540,7 +540,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(172, 72);
+            this.label13.Location = new System.Drawing.Point(174, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(89, 12);
             this.label13.TabIndex = 4;
@@ -549,7 +549,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(62, 72);
+            this.label14.Location = new System.Drawing.Point(64, 69);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(41, 12);
             this.label14.TabIndex = 4;
@@ -558,7 +558,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(196, 44);
+            this.label15.Location = new System.Drawing.Point(198, 41);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 12);
             this.label15.TabIndex = 4;
@@ -566,7 +566,7 @@
             // 
             // nUD302
             // 
-            this.nUD302.Location = new System.Drawing.Point(267, 154);
+            this.nUD302.Location = new System.Drawing.Point(269, 151);
             this.nUD302.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -582,7 +582,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(38, 100);
+            this.label16.Location = new System.Drawing.Point(40, 97);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 12);
             this.label16.TabIndex = 4;
@@ -590,7 +590,7 @@
             // 
             // nUD301
             // 
-            this.nUD301.Location = new System.Drawing.Point(267, 126);
+            this.nUD301.Location = new System.Drawing.Point(269, 123);
             this.nUD301.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -606,7 +606,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 156);
+            this.label17.Location = new System.Drawing.Point(16, 153);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(89, 12);
             this.label17.TabIndex = 4;
@@ -614,7 +614,7 @@
             // 
             // nUD203
             // 
-            this.nUD203.Location = new System.Drawing.Point(267, 98);
+            this.nUD203.Location = new System.Drawing.Point(269, 95);
             this.nUD203.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -630,7 +630,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(38, 128);
+            this.label18.Location = new System.Drawing.Point(40, 125);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(65, 12);
             this.label18.TabIndex = 4;
@@ -638,7 +638,7 @@
             // 
             // nUD202
             // 
-            this.nUD202.Location = new System.Drawing.Point(267, 70);
+            this.nUD202.Location = new System.Drawing.Point(269, 67);
             this.nUD202.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -653,7 +653,7 @@
             // 
             // nUD201
             // 
-            this.nUD201.Location = new System.Drawing.Point(267, 42);
+            this.nUD201.Location = new System.Drawing.Point(269, 39);
             this.nUD201.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -936,7 +936,7 @@
         private System.Windows.Forms.TextBox txtPaperMoney;
         private System.Windows.Forms.Label labUnitID;
         private System.Windows.Forms.Label labUnit;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
     }
 }

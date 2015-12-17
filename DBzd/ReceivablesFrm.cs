@@ -262,8 +262,20 @@ namespace DBzd
                 labhasTotal.Text = "0";
                 //清空交款记录
                 listView1.Items.Clear();
+                /*
+                 * 针对于级子单位，可以在未交款的情况下，先分配任务。如社保局。
+                 * 所以要先看下实际任务量中，是否已经分配了该单位的任务。有则加载；无则按任务计划加载。
+                 */
+                int hasTask = mf.DS.TruePaper.Select("UnitID='" + unitID + "' and Year='" + year + "'").ToList().Count;
                 //根据单位ID，自动加载单位分配的任务数量
-                LoadPaperTask();
+                if (hasTask > 0)//启示录了真实任务数量
+                {
+                    LoadHasPayTask();
+                }
+                else//加载计划任务数量
+                {
+                    LoadPaperTask();
+                }
             }
             //计算币值
             txtHasMoeny.Text = txtTruePrice.Text;
@@ -273,6 +285,8 @@ namespace DBzd
 
              }));
         }
+
+     
 
         //有交款记录的单位，需要加载真实的订阅的报刊数，不能显示计划数了。
         //其次，每次提交，或是保存二次交款时，真实数据不能新增，只可修改。       
@@ -444,8 +458,8 @@ namespace DBzd
 
             mf.DS.Receivables.AddReceivablesRow(rr);
             mf.receivablesTap.Update(mf.DS.Receivables);
-            mf.DS.Receivables.Dispose();
-            mf.receivablesTap.Fill(mf.DS.Receivables);
+            //mf.DS.Receivables.Dispose();
+            //mf.receivablesTap.Fill(mf.DS.Receivables);
 
             //记录真实报刊数到库
             SavePapetNumberTODB();

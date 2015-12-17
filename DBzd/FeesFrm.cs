@@ -174,9 +174,14 @@ namespace DBzd
 
             mf.toolStripStatusLabel1.Text += "    欠条：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='欠条' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 
-            mf.toolStripStatusLabel1.Text += "    未交：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='未交' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+            //mf.toolStripStatusLabel1.Text += "    未交：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='未交' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 
             mf.toolStripStatusLabel2.Text += "合计各类总额:" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listView1.SelectedItems[0].BackColor = Color.Red;
         }
 
 

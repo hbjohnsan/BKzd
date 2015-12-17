@@ -48,17 +48,17 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labZhanBi = new System.Windows.Forms.Label();
-            this.labUnitHasOverNumb = new System.Windows.Forms.Label();
-            this.labUnitNumber = new System.Windows.Forms.Label();
             this.labNoGieMoney = new System.Windows.Forms.Label();
             this.labTrueMoney = new System.Windows.Forms.Label();
-            this.labCaiZPT = new System.Windows.Forms.Label();
-            this.labTopGitMoney = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.labUnitHasOverNumb = new System.Windows.Forms.Label();
+            this.labUnitNumber = new System.Windows.Forms.Label();
+            this.labCaiZPT = new System.Windows.Forms.Label();
+            this.labTopGitMoney = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -95,9 +95,10 @@
             // 
             // toolStripComboBox1
             // 
+            this.toolStripComboBox1.AutoSize = false;
             this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(55, 25);
             // 
             // toolStripSeparator1
             // 
@@ -229,24 +230,6 @@
             this.labZhanBi.TabIndex = 15;
             this.labZhanBi.Text = "labZhanBi";
             // 
-            // labUnitHasOverNumb
-            // 
-            this.labUnitHasOverNumb.AutoSize = true;
-            this.labUnitHasOverNumb.Location = new System.Drawing.Point(224, 352);
-            this.labUnitHasOverNumb.Name = "labUnitHasOverNumb";
-            this.labUnitHasOverNumb.Size = new System.Drawing.Size(113, 12);
-            this.labUnitHasOverNumb.TabIndex = 14;
-            this.labUnitHasOverNumb.Text = "labUnitHasOverNumb";
-            // 
-            // labUnitNumber
-            // 
-            this.labUnitNumber.AutoSize = true;
-            this.labUnitNumber.Location = new System.Drawing.Point(224, 329);
-            this.labUnitNumber.Name = "labUnitNumber";
-            this.labUnitNumber.Size = new System.Drawing.Size(83, 12);
-            this.labUnitNumber.TabIndex = 13;
-            this.labUnitNumber.Text = "labUnitNumber";
-            // 
             // labNoGieMoney
             // 
             this.labNoGieMoney.AutoSize = true;
@@ -264,6 +247,51 @@
             this.labTrueMoney.Size = new System.Drawing.Size(77, 12);
             this.labTrueMoney.TabIndex = 11;
             this.labTrueMoney.Text = "labTrueMoney";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 76);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(113, 12);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "完成上级金额比例：";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(34, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 12);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "未完成总金额：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "已完成任务总额：";
+            // 
+            // labUnitHasOverNumb
+            // 
+            this.labUnitHasOverNumb.AutoSize = true;
+            this.labUnitHasOverNumb.Location = new System.Drawing.Point(224, 352);
+            this.labUnitHasOverNumb.Name = "labUnitHasOverNumb";
+            this.labUnitHasOverNumb.Size = new System.Drawing.Size(113, 12);
+            this.labUnitHasOverNumb.TabIndex = 14;
+            this.labUnitHasOverNumb.Text = "labUnitHasOverNumb";
+            // 
+            // labUnitNumber
+            // 
+            this.labUnitNumber.AutoSize = true;
+            this.labUnitNumber.Location = new System.Drawing.Point(224, 329);
+            this.labUnitNumber.Name = "labUnitNumber";
+            this.labUnitNumber.Size = new System.Drawing.Size(83, 12);
+            this.labUnitNumber.TabIndex = 13;
+            this.labUnitNumber.Text = "labUnitNumber";
             // 
             // labCaiZPT
             // 
@@ -283,15 +311,6 @@
             this.labTopGitMoney.TabIndex = 8;
             this.labTopGitMoney.Text = "labTopGitMoney";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 76);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 12);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "完成上级金额比例：";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -309,24 +328,6 @@
             this.label6.Size = new System.Drawing.Size(89, 12);
             this.label6.TabIndex = 5;
             this.label6.Text = "完成单位家数：";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 52);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 12);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "未完成总金额：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "已完成任务总额：";
             // 
             // label2
             // 

@@ -113,8 +113,9 @@
             // 
             // toolStripComboBox1
             // 
+            this.toolStripComboBox1.AutoSize = false;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(75, 25);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(55, 25);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // toolStripLabel2
@@ -125,8 +126,9 @@
             // 
             // toolStripComboBox2
             // 
+            this.toolStripComboBox2.AutoSize = false;
             this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(75, 25);
+            this.toolStripComboBox2.Size = new System.Drawing.Size(55, 25);
             // 
             // toolStripButton1
             // 

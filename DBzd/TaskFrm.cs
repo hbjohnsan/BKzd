@@ -44,21 +44,22 @@ namespace DBzd
         private void ShowUnitTask()
         {
             listViewUnit.Items.Clear();
+            string year = tscombYear.SelectedItem.ToString();
             var q = from p in mf.DS.Unit.AsEnumerable()
-                    where p.Istake == "是"
+                    where p.Istake == "是" && p.Year==year
                     select p;
             foreach (var i in q)
             {
 
-                ListViewItem lvi = new ListViewItem(new string[] { "", i.ShortName });
-                lvi.Tag = i.UnitID;
+                ListViewItem lvi = new ListViewItem(new string[] { i.ID.ToString(), i.ShortName });
+                lvi.Tag = i.ID;
                 listViewUnit.Items.Add(lvi);
             }
             //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+            //for (int i = 0; i < listViewUnit.Items.Count; i++)
+            //{
+            //    listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
+            //}
         }
 
 
@@ -117,27 +118,28 @@ namespace DBzd
         private void tsbTxtSearch_TextChanged(object sender, EventArgs e)
         {
             string upper = tsbTxtSearch.Text.ToUpper();
+            string year = tscombYear.SelectedItem.ToString();
             listViewUnit.Items.Clear();
             var q = from p in mf.DS.Unit.AsEnumerable()
-                    where p.Istake == "是"
+                    where p.Istake == "是"&& p.Year==year
                     select p;
             foreach (var i in q)
             {
                 string namecode = PinYin.GetCodstring(i.ShortName);
                 if (namecode.StartsWith(upper))
                 {
-                    ListViewItem lvi = new ListViewItem(new string[] { "", i.ShortName });
-                    lvi.Tag = i.UnitID;
+                    ListViewItem lvi = new ListViewItem(new string[] { i.ID.ToString(), i.ShortName });
+                    lvi.Tag = i.ID;
                     listViewUnit.Items.Add(lvi);
                 }
             }
 
 
             //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+            //for (int i = 0; i < listViewUnit.Items.Count; i++)
+            //{
+            //    listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
+            //}
         }
         //年度下拉列表
         private void tscombYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -238,14 +240,15 @@ namespace DBzd
             {
                 listViewUnit.SelectedItems[0].BackColor = Color.Red;
                 #region 显示报刊数量
-                string unitid = listViewUnit.SelectedItems[0].Tag.ToString();
+                int id =int.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
+                string unitid = mf.DS.Unit.FindByID(id).UnitID;
                 string year = tscombYear.SelectedItem.ToString().Trim();
                 //判断该单位是不是已经分配了任务，如果是从复制上年度的规则中分配的，那么就显示如下，如果不是，那么所有报刊数据应为0
                 if (mf.DS.PaperTask.Select("Year='" + year + "' and UnitID='" + unitid + "'").Count() > 0)
                 {
                     BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == unitid select p).SingleOrDefault();
-                    labUnitID.Text = unitid;
-                    labUnit.Text = mf.DS.Unit.FindByUnitID(unitid).ShortName;
+                    labUnitID.Text = unitid.ToString();
+                    labUnit.Text = mf.DS.Unit.FindByID(id).ShortName;
                     nUD101.Value = pr.P101;
                     nUD102.Value = pr.P102;
                     nUD103.Value = pr.P103;
@@ -263,7 +266,7 @@ namespace DBzd
                 else
                 {
                     labUnitID.Text = unitid;
-                    labUnit.Text = mf.DS.Unit.FindByUnitID(unitid).ShortName;
+                    labUnit.Text = mf.DS.Unit.FindByID(id).ShortName;
                     nUD101.Value = nUD102.Value = nUD103.Value = nUD104.Value = nUD105.Value = nUD201.Value = nUD202.Value = nUD203.Value = nUD301.Value = nUD302.Value = 0;
                     txtComnyMoney.Text = txtPaperMoney.Text = labTotalMoney.Text = "0";
                 }
@@ -435,14 +438,17 @@ namespace DBzd
         }
         #endregion
 
-      
+       //保存变动的任务量
         private void btnEditTask_Click(object sender, EventArgs e)
         {
-            string unitid = listViewUnit.SelectedItems[0].Tag.ToString();
+            int ID=Int32.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
+            string unitid = mf.DS.PaperTask.FindByID(ID).UnitId;
             string year = tscombYear.SelectedItem.ToString().Trim();
+
             if (mf.DS.PaperTask.Select("Year='" + year + "' and UnitID='" + unitid + "'").Count() > 0)
             {
-                BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
+                //(from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
+                BKDataSet.PaperTaskRow pr =  (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
                 pr.P101 = Convert.ToInt32(nUD101.Value);
                 pr.P102 = Convert.ToInt32(nUD102.Value);
                 pr.P103 = Convert.ToInt32(nUD103.Value);
