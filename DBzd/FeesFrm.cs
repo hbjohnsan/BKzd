@@ -82,13 +82,17 @@ namespace DBzd
                 string namecode = PinYin.GetCodstring(i.shortname);
                 if (namecode.StartsWith(upper))
                 {
-                    ListViewItem lv = new ListViewItem(new string[] { i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
+                    ListViewItem lv = new ListViewItem(new string[] { "",i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
                     listView1.Items.Add(lv); ;
 
                 }
 
             }
-
+            //显示序号
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
+            }
 
         }
 

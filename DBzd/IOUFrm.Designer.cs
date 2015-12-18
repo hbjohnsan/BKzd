@@ -57,21 +57,15 @@
             this.tsbtnRight = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.combJKDW = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTel = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTruePrice = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label5 = new System.Windows.Forms.Label();
             this.rtbDoc = new ExtendedRichTextBox.RichTextBoxPrintCtrl();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pageSetupDialog1
@@ -287,7 +281,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 24);
+            this.label1.Location = new System.Drawing.Point(17, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
@@ -297,33 +291,17 @@
             // 
             this.combJKDW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combJKDW.FormattingEnabled = true;
-            this.combJKDW.Location = new System.Drawing.Point(76, 21);
+            this.combJKDW.Location = new System.Drawing.Point(64, 20);
             this.combJKDW.Name = "combJKDW";
             this.combJKDW.Size = new System.Drawing.Size(121, 20);
             this.combJKDW.TabIndex = 1;
             this.combJKDW.SelectedIndexChanged += new System.EventHandler(this.combJKDW_SelectedIndexChanged);
             this.combJKDW.SelectedValueChanged += new System.EventHandler(this.combJKDW_SelectedValueChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "电话：";
-            // 
-            // txtTel
-            // 
-            this.txtTel.Location = new System.Drawing.Point(76, 58);
-            this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(121, 21);
-            this.txtTel.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(239, 24);
+            this.label3.Location = new System.Drawing.Point(227, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 4;
@@ -331,70 +309,19 @@
             // 
             // txtTruePrice
             // 
-            this.txtTruePrice.Location = new System.Drawing.Point(286, 21);
+            this.txtTruePrice.Location = new System.Drawing.Point(274, 20);
             this.txtTruePrice.Name = "txtTruePrice";
             this.txtTruePrice.Size = new System.Drawing.Size(123, 21);
             this.txtTruePrice.TabIndex = 5;
             this.txtTruePrice.Text = "0";
             this.txtTruePrice.TextChanged += new System.EventHandler(this.txtTruePrice_TextChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(239, 61);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "姓名：";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(286, 58);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(123, 21);
-            this.txtName.TabIndex = 7;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.txtName);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.txtTruePrice);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.txtTel);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.combJKDW);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.rtbDoc);
-            this.splitContainer1.Size = new System.Drawing.Size(778, 621);
-            this.splitContainer1.SplitterDistance = 153;
-            this.splitContainer1.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(489, 115);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "加入报刊项及金额。";
-            // 
             // rtbDoc
             // 
             this.rtbDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbDoc.Location = new System.Drawing.Point(0, 0);
             this.rtbDoc.Name = "rtbDoc";
-            this.rtbDoc.Size = new System.Drawing.Size(778, 464);
+            this.rtbDoc.Size = new System.Drawing.Size(778, 570);
             this.rtbDoc.TabIndex = 0;
             this.rtbDoc.Text = "";
             // 
@@ -403,12 +330,35 @@
             this.printDialog2.Document = this.printDocument1;
             this.printDialog2.UseEXDialog = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.combJKDW);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtTruePrice);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 25);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(778, 51);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rtbDoc);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 76);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(778, 570);
+            this.panel1.TabIndex = 7;
+            // 
             // IOUFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 646);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "IOUFrm";
@@ -416,11 +366,9 @@
             this.Load += new System.EventHandler(this.IOUFrm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,15 +404,11 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox combJKDW;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTruePrice;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PrintDialog printDialog2;
         private ExtendedRichTextBox.RichTextBoxPrintCtrl rtbDoc;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

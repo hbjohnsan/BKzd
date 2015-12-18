@@ -37,7 +37,7 @@ Receivables		收款:ID,UnitID,PayKind,TrueMoney,PayPeopleId,PayTime,IsOver,BZ,Year
 雷庄镇中学
 棒子镇中学
 响嘡镇中学
-王庄子镇中学
+王店子镇中学
 安各庄镇中学
 茨榆坨镇中学
 古城办中学 
@@ -79,3 +79,18 @@ Receivables		收款:ID,UnitID,PayKind,TrueMoney,PayPeopleId,PayTime,IsOver,BZ,Year
         教育局，下分到各镇中心校，及小学。人社局的四家下属单位。
      这样更改表结构的目的：一是分配任务方便。在接到上级总任务后，再本级单位下分给个单位，记录出计划分给各单位的总金额。可以随时掌握当前进度，更真实的反映工作流程。
 	二是
+
+(from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == unitid select p).SingleOrDefault();
+rabYes.Checked = (i.Istake.Equals("是")) ? true : false;
+ ur.AddressID = mf.DS.Address.AsEnumerable().Select(t => t.Field<int>("ID")).Max();
+
+
+ if (!DBNull.Value.Equals(i.AddressID))
+                {
+                    BKDataSet.AddressRow ar = mf.DS.Address.FindByID(Convert.ToInt32(i.AddressID));
+                    combArea.Text = ar.Area;
+                    combTwon.Text = ar.Town;
+                }
+
+--------------------------------
+根据金额查单位 有的单位打款了。需要快速找到他

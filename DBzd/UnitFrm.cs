@@ -135,7 +135,7 @@ namespace DBzd
                 int id =Int32.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
                 UnitEidtFrm uef = new UnitEidtFrm(mf, id);
                 uef.ShowDialog();
-                
+                listviewUnitRelaod();
             }
             else
             {

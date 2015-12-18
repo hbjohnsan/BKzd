@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CountFrm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -64,9 +65,23 @@
             this.label9 = new System.Windows.Forms.Label();
             this.labMustMoney = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listViewNoMoney = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.导出ExcleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -83,7 +98,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(702, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(964, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -160,12 +175,13 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(289, 28);
+            this.listView1.Location = new System.Drawing.Point(3, 17);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(401, 268);
+            this.listView1.Size = new System.Drawing.Size(688, 158);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -216,7 +232,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(12, 143);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(238, 108);
+            this.groupBox1.Size = new System.Drawing.Size(225, 108);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "进度统计：";
@@ -278,7 +294,7 @@
             // labUnitHasOverNumb
             // 
             this.labUnitHasOverNumb.AutoSize = true;
-            this.labUnitHasOverNumb.Location = new System.Drawing.Point(224, 352);
+            this.labUnitHasOverNumb.Location = new System.Drawing.Point(119, 307);
             this.labUnitHasOverNumb.Name = "labUnitHasOverNumb";
             this.labUnitHasOverNumb.Size = new System.Drawing.Size(113, 12);
             this.labUnitHasOverNumb.TabIndex = 14;
@@ -287,7 +303,7 @@
             // labUnitNumber
             // 
             this.labUnitNumber.AutoSize = true;
-            this.labUnitNumber.Location = new System.Drawing.Point(224, 329);
+            this.labUnitNumber.Location = new System.Drawing.Point(119, 284);
             this.labUnitNumber.Name = "labUnitNumber";
             this.labUnitNumber.Size = new System.Drawing.Size(83, 12);
             this.labUnitNumber.TabIndex = 13;
@@ -314,7 +330,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(117, 329);
+            this.label7.Location = new System.Drawing.Point(12, 284);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 12);
             this.label7.TabIndex = 6;
@@ -323,7 +339,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(129, 353);
+            this.label6.Location = new System.Drawing.Point(24, 308);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 12);
             this.label6.TabIndex = 5;
@@ -380,16 +396,95 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "任务量：";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listView1);
+            this.groupBox3.Location = new System.Drawing.Point(258, 29);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(694, 178);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "综合情况";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listViewNoMoney);
+            this.groupBox4.Location = new System.Drawing.Point(258, 255);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(688, 230);
+            this.groupBox4.TabIndex = 16;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "未交款单位";
+            // 
+            // listViewNoMoney
+            // 
+            this.listViewNoMoney.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
+            this.listViewNoMoney.ContextMenuStrip = this.contextMenuStrip1;
+            this.listViewNoMoney.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewNoMoney.FullRowSelect = true;
+            this.listViewNoMoney.GridLines = true;
+            this.listViewNoMoney.Location = new System.Drawing.Point(3, 17);
+            this.listViewNoMoney.Name = "listViewNoMoney";
+            this.listViewNoMoney.Size = new System.Drawing.Size(682, 210);
+            this.listViewNoMoney.TabIndex = 0;
+            this.listViewNoMoney.UseCompatibleStateImageBehavior = false;
+            this.listViewNoMoney.View = System.Windows.Forms.View.Details;
+            this.listViewNoMoney.SelectedIndexChanged += new System.EventHandler(this.listViewNoMoney_SelectedIndexChanged);
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "序号";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "单位名";
+            this.columnHeader8.Width = 122;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "电话";
+            this.columnHeader9.Width = 99;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "任务金额";
+            this.columnHeader10.Width = 117;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "状态";
+            this.columnHeader11.Width = 74;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.导出ExcleToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 26);
+            // 
+            // 导出ExcleToolStripMenuItem
+            // 
+            this.导出ExcleToolStripMenuItem.Name = "导出ExcleToolStripMenuItem";
+            this.导出ExcleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.导出ExcleToolStripMenuItem.Text = "导出Excle";
+            this.导出ExcleToolStripMenuItem.Click += new System.EventHandler(this.导出ExcleToolStripMenuItem_Click);
+            // 
             // CountFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 459);
+            this.ClientSize = new System.Drawing.Size(964, 562);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.labUnitHasOverNumb);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labUnitNumber);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -403,6 +498,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,5 +543,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label labMustMoney;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListView listViewNoMoney;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 导出ExcleToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

@@ -67,3 +67,5 @@ E:\DBzd\DBzd\bin\Debug\System.Data.SQLite.xml
 E:\DBzd\DBzd\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\DBzd\DBzd\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\DBzd\DBzd\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\DBzd\DBzd\obj\x86\Debug\Interop.Microsoft.Office.Core.dll
+E:\DBzd\DBzd\obj\x86\Debug\DBzd.csproj.ResolveComReference.cache
