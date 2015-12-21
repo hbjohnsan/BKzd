@@ -126,25 +126,76 @@ namespace DBzd
         //搜索单位
         private void tsTxtSearch_TextChanged(object sender, EventArgs e)
         {
+
             combJKDW.Items.Clear();
-            string upper = tsTxtSearch.Text.ToUpper();
-            var q = from u in mf.DS.Unit.AsEnumerable()
-                    where u.IsPay == "是"
-                    select u;
-            foreach (var i in q)
+            string year = toolStripComboBox1.SelectedItem.ToString();
+
+           
+            //如果是数字，则搜索金额，如果文字则用拼音方法搜索
+            /*判断输入的字符串不是数字
+             */
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(tsTxtSearch.Text, @"^([0-9]*)\.?[0-9]*$"))//判断不是数字那按文本算
             {
-                string namecode = PinYin.GetCodstring(i.ShortName);
-                //  if (namecode.Contains(upper))
-                if (namecode.StartsWith(upper))
+                string upper = tsTxtSearch.Text.ToUpper();
+                var q = from u in mf.DS.Unit.AsEnumerable()
+                        where u.IsPay == "是"
+                        select u;
+                foreach (var i in q)
                 {
-                    Unit u = new Unit();
-                    u.UnitID = i.UnitID;
-                    u.ShortName = i.ShortName;
-                    combJKDW.Items.Add(u);
+                    string namecode = PinYin.GetCodstring(i.ShortName);
+                    //  if (namecode.Contains(upper))
+                    if (namecode.StartsWith(upper))
+                    {
+                        Unit u = new Unit();
+                        u.UnitID = i.UnitID;
+                        u.ShortName = i.ShortName;
+                        combJKDW.Items.Add(u);
+                    }
                 }
+                combJKDW.DisplayMember = "ShortName";
+                combJKDW.SelectedIndex = 0;
             }
-            combJKDW.DisplayMember = "ShortName";
-            combJKDW.SelectedIndex = 0;
+            else//这种情况就按数字处理了。
+            {
+                //如果是数字，由先从truepaper中先找，没有再从papertask中找。
+                bool hasTask=(mf.DS.TruePaper.Select("Year='"+year+"' and TrueMoney='"+double.Parse(tsTxtSearch.Text)+"'").Count()>0);
+                if (hasTask)
+                {
+                    var q = from u in mf.DS.Unit.AsEnumerable()
+                            from t in mf.DS.TruePaper.AsEnumerable()
+                            where t.UnitID == u.UnitID && t.Year == year && t.TrueMoney == double.Parse(tsTxtSearch.Text)
+                            select u;
+                    foreach (var i in q)
+                    {
+                        Unit u = new Unit();
+                        u.UnitID = i.UnitID;
+                        u.ShortName = i.ShortName;
+                        combJKDW.Items.Add(u);
+                    }
+                    combJKDW.DisplayMember = "ShortName";
+                    combJKDW.SelectedIndex = 0;
+                }
+                else //从计划任务表中提取
+                {
+                    var q = from u in mf.DS.Unit.AsEnumerable()
+                            from t in mf.DS.PaperTask.AsEnumerable()
+                            where t.UnitId== u.UnitID && t.Year == year && t.TotalMoney == double.Parse(tsTxtSearch.Text)
+                            select u;
+                    foreach (var i in q)
+                    {
+                        Unit u = new Unit();
+                        u.UnitID = i.UnitID;
+                        u.ShortName = i.ShortName;
+                        combJKDW.Items.Add(u);
+                    }
+                    combJKDW.DisplayMember = "ShortName";
+                    combJKDW.SelectedIndex = 0;
+                
+                }
+ 
+            }
+           
 
         }
         //选择年度变化时
