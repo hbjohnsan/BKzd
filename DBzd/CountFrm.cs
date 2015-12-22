@@ -101,8 +101,8 @@ namespace DBzd
 
             labZhanBi.Text = string.Format("{0:0.00%}", (double.Parse(labTrueMoney.Text) / double.Parse(labMustMoney.Text)));//得到5.88%
 
-            labUnitNumber.Text = "";
-            labUnitHasOverNumb.Text = "";
+           labPlantMoney.Text =mf.DS.PaperTask.Compute("Sum(TotalMoney)","Year='"+year+"'").ToString();
+           labHasMoneyBFB.Text = string.Format("{0:0.00%}", (double.Parse(labTrueMoney.Text) / double.Parse(labPlantMoney.Text))); ;
         }
         //实现查找谁多少了，少交了。
         private void LoadListView()

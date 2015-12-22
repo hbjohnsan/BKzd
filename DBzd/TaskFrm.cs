@@ -46,20 +46,24 @@ namespace DBzd
             listViewUnit.Items.Clear();
             string year = tscombYear.SelectedItem.ToString();
             var q = from p in mf.DS.Unit.AsEnumerable()
-                    where p.Istake == "是" && p.Year==year
-                    select p;
+                    from ps in mf.DS.PaperTask.AsEnumerable()
+                    where p.UnitID ==ps.UnitId && ps.Year==year
+                    select new  {
+                       ID=ps.ID,
+                       ShortName=p.ShortName        
+        };
             foreach (var i in q)
             {
 
-                ListViewItem lvi = new ListViewItem(new string[] { i.ID.ToString(), i.ShortName });
+                ListViewItem lvi = new ListViewItem(new string[] { "", i.ShortName });
                 lvi.Tag = i.ID;
                 listViewUnit.Items.Add(lvi);
             }
             //显示序号
-            //for (int i = 0; i < listViewUnit.Items.Count; i++)
-            //{
-            //    listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            //}
+            for (int i = 0; i < listViewUnit.Items.Count; i++)
+            {
+                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
+            }
         }
 
 

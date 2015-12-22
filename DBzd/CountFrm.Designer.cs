@@ -54,8 +54,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.labUnitHasOverNumb = new System.Windows.Forms.Label();
-            this.labUnitNumber = new System.Windows.Forms.Label();
+            this.labHasMoneyBFB = new System.Windows.Forms.Label();
+            this.labPlantMoney = new System.Windows.Forms.Label();
             this.labCaiZPT = new System.Windows.Forms.Label();
             this.labTopGitMoney = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -291,23 +291,23 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "已完成任务总额：";
             // 
-            // labUnitHasOverNumb
+            // labHasMoneyBFB
             // 
-            this.labUnitHasOverNumb.AutoSize = true;
-            this.labUnitHasOverNumb.Location = new System.Drawing.Point(119, 307);
-            this.labUnitHasOverNumb.Name = "labUnitHasOverNumb";
-            this.labUnitHasOverNumb.Size = new System.Drawing.Size(113, 12);
-            this.labUnitHasOverNumb.TabIndex = 14;
-            this.labUnitHasOverNumb.Text = "labUnitHasOverNumb";
+            this.labHasMoneyBFB.AutoSize = true;
+            this.labHasMoneyBFB.Location = new System.Drawing.Point(119, 307);
+            this.labHasMoneyBFB.Name = "labHasMoneyBFB";
+            this.labHasMoneyBFB.Size = new System.Drawing.Size(113, 12);
+            this.labHasMoneyBFB.TabIndex = 14;
+            this.labHasMoneyBFB.Text = "labUnitHasOverNumb";
             // 
-            // labUnitNumber
+            // labPlantMoney
             // 
-            this.labUnitNumber.AutoSize = true;
-            this.labUnitNumber.Location = new System.Drawing.Point(119, 284);
-            this.labUnitNumber.Name = "labUnitNumber";
-            this.labUnitNumber.Size = new System.Drawing.Size(83, 12);
-            this.labUnitNumber.TabIndex = 13;
-            this.labUnitNumber.Text = "labUnitNumber";
+            this.labPlantMoney.AutoSize = true;
+            this.labPlantMoney.Location = new System.Drawing.Point(119, 284);
+            this.labPlantMoney.Name = "labPlantMoney";
+            this.labPlantMoney.Size = new System.Drawing.Size(83, 12);
+            this.labPlantMoney.TabIndex = 13;
+            this.labPlantMoney.Text = "labUnitNumber";
             // 
             // labCaiZPT
             // 
@@ -332,18 +332,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 284);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 12);
+            this.label7.Size = new System.Drawing.Size(113, 12);
             this.label7.TabIndex = 6;
-            this.label7.Text = "有任务单位总数：";
+            this.label7.Text = "分配计划任务总数：";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(24, 308);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.Size = new System.Drawing.Size(101, 12);
             this.label6.TabIndex = 5;
-            this.label6.Text = "完成单位家数：";
+            this.label6.Text = "完成计划百分比：";
             // 
             // label2
             // 
@@ -482,9 +482,9 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.labUnitHasOverNumb);
+            this.Controls.Add(this.labHasMoneyBFB);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.labUnitNumber);
+            this.Controls.Add(this.labPlantMoney);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -527,8 +527,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labZhanBi;
-        private System.Windows.Forms.Label labUnitHasOverNumb;
-        private System.Windows.Forms.Label labUnitNumber;
+        private System.Windows.Forms.Label labHasMoneyBFB;
+        private System.Windows.Forms.Label labPlantMoney;
         private System.Windows.Forms.Label labNoGieMoney;
         private System.Windows.Forms.Label labTrueMoney;
         private System.Windows.Forms.Label labCaiZPT;
