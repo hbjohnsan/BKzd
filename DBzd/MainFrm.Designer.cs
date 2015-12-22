@@ -174,7 +174,7 @@
             // 
             this.计算器ToolStripMenuItem.Name = "计算器ToolStripMenuItem";
             this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.计算器ToolStripMenuItem.Text = "计算器";
+            this.计算器ToolStripMenuItem.Text = "分报器";
             this.计算器ToolStripMenuItem.Click += new System.EventHandler(this.计算器ToolStripMenuItem_Click);
             // 
             // 投递ToolStripMenuItem

@@ -94,3 +94,4 @@ rabYes.Checked = (i.Istake.Equals("是")) ? true : false;
 
 --------------------------------
 根据金额查单位 有的单位打款了。需要快速找到他
+ if (!System.Text.RegularExpressions.Regex.IsMatch(tsTxtSearch.Text, @"^([0-9]*)\.?[0-9]*$"))//判断不是数字那按文本算
