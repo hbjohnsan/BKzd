@@ -157,10 +157,28 @@ namespace DBzd
                 combJKDW.SelectedIndex = 0;
             }
             else//这种情况就按数字处理了。
-            {
-                //如果是数字，由先从truepaper中先找，没有再从papertask中找。
-                bool hasTask=(mf.DS.TruePaper.Select("Year='"+year+"' and TrueMoney='"+double.Parse(tsTxtSearch.Text)+"'").Count()>0);
-                if (hasTask)
+            {   //todo:应先从收款表中找，这个只解决了有多次交款记录的单位。
+                bool haspay = (mf.DS.Receivables.Select("Year='" + year + "' and TrueMoney='" + double.Parse(tsTxtSearch.Text) + "'").Count() > 0);
+                //再从实际任务表中找truepaper中先找，没有再从papertask中找。
+                bool hasTask = (mf.DS.TruePaper.Select("Year='" + year + "' and TrueMoney='" + double.Parse(tsTxtSearch.Text) + "'").Count() > 0);
+                if (haspay)
+                {
+                    var q = from u in mf.DS.Unit.AsEnumerable()
+                            from t in mf.DS.Receivables.AsEnumerable()
+                            where t.UnitID == u.UnitID && t.Year == year && t.TrueMoney == double.Parse(tsTxtSearch.Text)
+                            select u;
+                    foreach (var i in q)
+                    {
+                        Unit u = new Unit();
+                        u.UnitID = i.UnitID;
+                        u.ShortName = i.ShortName;
+                        combJKDW.Items.Add(u);
+                    }
+                    combJKDW.DisplayMember = "ShortName";
+                    combJKDW.SelectedIndex = 0;
+                }
+               
+                else if (hasTask)
                 {
                     var q = from u in mf.DS.Unit.AsEnumerable()
                             from t in mf.DS.TruePaper.AsEnumerable()
@@ -293,7 +311,7 @@ namespace DBzd
                 //从交款记录任务表中提取实际刊数
                 LoadHasPayTask();
                 //
-                TotalHasPayMoney();
+                //TotalHasPayMoney();
 
             }
             else
@@ -547,7 +565,7 @@ namespace DBzd
                 tr.P203 = Convert.ToInt32(nUD203.Value);
                 tr.P301 = Convert.ToInt32(nUD301.Value);
                 tr.P302 = Convert.ToInt32(nUD302.Value);
-                tr.TrueMoney = Convert.ToDouble(txtTruePrice.Text);
+                tr.TrueMoney = Convert.ToDouble(labTal.Text);
                 if (rabYes.Checked == true)
                 {
                     tr.IsOver = "是";
@@ -573,7 +591,7 @@ namespace DBzd
                 tr.P203 = Convert.ToInt32(nUD203.Value);
                 tr.P301 = Convert.ToInt32(nUD301.Value);
                 tr.P302 = Convert.ToInt32(nUD302.Value);
-                tr.TrueMoney = Convert.ToDouble(txtTruePrice.Text);
+                tr.TrueMoney = Convert.ToDouble(labTal.Text);
                 if (rabYes.Checked == true)
                 {
                     tr.IsOver = "是";

@@ -108,7 +108,7 @@ namespace DBzd
         }
 
 
-        //todo:   1、在main中定义总工具栏，各分窗口再加入？
+  
 
         #region 菜单项
         private void 单位ToolStripMenuItem_Click(object sender, EventArgs e)
