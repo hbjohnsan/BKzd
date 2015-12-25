@@ -67,3 +67,8 @@ E:\DBzd\DBzd\bin\Debug\System.Data.SQLite.xml
 E:\DBzd\DBzd\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\DBzd\DBzd\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\DBzd\DBzd\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\DBzd\DBzd\bin\Debug\BKDataSet.cs
+E:\DBzd\DBzd\bin\Debug\BKDataSet.Designer.cs
+E:\DBzd\DBzd\bin\Debug\BKDataSet.xsc
+E:\DBzd\DBzd\bin\Debug\BKDataSet.xsd
+E:\DBzd\DBzd\bin\Debug\BKDataSet.xss

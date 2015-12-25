@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 using Interop.Excel;
+using System.Threading;
 
 
 namespace DBzd
@@ -46,12 +47,16 @@ namespace DBzd
             toolStripComboBox1.SelectedIndex = 0;
             #endregion
 
-            LoadListView();
+           
 
             TotalMoney();
 
+
             //加载未交款单位列表
             LoadListViewNoMoney();
+
+          LoadListView();
+
         }
         //加载未交款单位列表       
         private void LoadListViewNoMoney()
@@ -137,19 +142,19 @@ namespace DBzd
                         unitID = ss.UnitID,
                         name = ss.Name,
                         plantMoney = ss.PlantMoney,
-                        trueMoney=t.TrueMoney
+                        trueMoney = t.TrueMoney
                     };
 
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { "", i.name, i.plantMoney.ToString(), i.trueMoney.ToString(), (i.plantMoney-i.trueMoney).ToString() }, "");
+                ListViewItem lv = new ListViewItem(new string[] { "", i.name, i.plantMoney.ToString(), i.trueMoney.ToString(), (i.plantMoney - i.trueMoney).ToString() }, "");
                 lv.Tag = i.unitID;
                 listView1.Items.Add(lv);
 
             }
 
             //第二步，加载交款总额。第三步比较
-          
+
 
             for (int i = 0; i < listView1.Items.Count; i++)
             {
