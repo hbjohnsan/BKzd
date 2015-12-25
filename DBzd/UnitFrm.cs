@@ -290,6 +290,7 @@ namespace DBzd
             string upper = toolStripTextBox1.Text.ToUpper();
             var unit = from p in mf.DS.Unit.AsEnumerable()
                        select p;
+            int xh = 1;
             foreach (var i in unit)
             {
                 string namecode = PinYin.GetCodstring(i.ShortName);
@@ -297,16 +298,12 @@ namespace DBzd
                 //  if (namecode.Contains(upper))
                 if (namecode.StartsWith(upper))
                 {
-                    ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
+                    ListViewItem lv = new ListViewItem(new string[] { (xh++).ToString(), i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
                     lv.Tag = i.ID;
                     listViewUnit.Items.Add(lv);
                 }
             }
-            //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+           
         }
         //增加
         private void tsbtnAdd_Click(object sender, EventArgs e)
@@ -343,17 +340,14 @@ namespace DBzd
                     orderby p.UnitID
                     where p.Kind == tscombKind.Text.Trim()
                     select p;
+            int xh = 1;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
+                ListViewItem lv = new ListViewItem(new string[] { (xh++).ToString(), i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
                 lv.Tag = i.ID;
                 listViewUnit.Items.Add(lv);
             }
-            //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+           
         }
         //显示有订刊任务单位
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -363,17 +357,14 @@ namespace DBzd
                     orderby p.UnitID
                     where p.Istake == "是"
                     select p;
+            int xh = 1;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
+                ListViewItem lv = new ListViewItem(new string[] { (xh++).ToString(), i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
                 lv.Tag = i.UnitID;
                 listViewUnit.Items.Add(lv);
             }
-            //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+          
         }
         //显示全部单位
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -382,17 +373,14 @@ namespace DBzd
             var q = from p in mf.DS.Unit.AsEnumerable()
                     orderby p.UnitID
                     select p;
+            int xh = 1;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { "", i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
+                ListViewItem lv = new ListViewItem(new string[] { (xh++).ToString(), i.UnitID, i.AllName, i.ShortName, i.Kind, i.Tel, i.Fax, i.Istake });
                 lv.Tag = i.ID;
                 listViewUnit.Items.Add(lv);
             }
-            //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+           
         }
         #endregion
 

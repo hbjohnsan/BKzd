@@ -47,7 +47,7 @@ namespace DBzd
             toolStripComboBox1.SelectedIndex = 0;
             #endregion
 
-           
+
 
             TotalMoney();
 
@@ -55,7 +55,7 @@ namespace DBzd
             //加载未交款单位列表
             LoadListViewNoMoney();
 
-          LoadListView();
+            LoadListView();
 
         }
         //加载未交款单位列表       
@@ -72,18 +72,19 @@ namespace DBzd
             var notIn = from a in mf.DS.Unit
                         where !((from b in mf.DS.Receivables where b.Year == year select b.UnitID).Contains(a.UnitID)) && a.IsPay == "是"
                         select a;
-
+            int xh = 1;
             foreach (var i in notIn)
             {
-                ListViewItem lv = new ListViewItem(new string[] { "", i.ShortName, i.Tel, "", "未交款" });
+                ListViewItem lv = new ListViewItem(new string[] {(xh++).ToString(), i.ShortName, i.Tel, "", "未交款" });
                 lv.Tag = i.UnitID;
                 listViewNoMoney.Items.Add(lv);
 
             }
-            //显示序号
+            
             for (int i = 0; i < listViewNoMoney.Items.Count; i++)
             {
-                listViewNoMoney.Items[i].SubItems[0].Text = (i + 1).ToString();
+                
+
                 //加载金额
                 string unitid = listViewNoMoney.Items[i].Tag.ToString();
                 //先从计划表中找金额，涉及到的子单位，如果分配到任务数，从实际任务表中找。都没有则为0
@@ -105,19 +106,25 @@ namespace DBzd
         private void TotalMoney()
         {
             string year = toolStripComboBox1.SelectedItem.ToString().Trim();
+            //上级任务总额
             labTopGitMoney.Text = mf.DS.Paper.Compute("Sum(TotalPrice)", "Year='" + year + "'").ToString();
+            //补贴额
             labCaiZPT.Text = mf.DS.Paper.Compute("Sum(TotalSubSidy)", "Year='" + year + "'").ToString();
+            //必完额
             labMustMoney.Text = (double.Parse(labTopGitMoney.Text) - double.Parse(labCaiZPT.Text)).ToString();
 
-            //包含欠条也算完成
+            //真实交款金额，包含欠条也算完成
             labTrueMoney.Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "'").ToString();
             //未完成任务金额
-            labNoGieMoney.Text = (double.Parse(labMustMoney.Text) - double.Parse(labTrueMoney.Text)).ToString();
+            labNoGieMoney.Text = Math.Round((double.Parse(labMustMoney.Text) - double.Parse(labTrueMoney.Text)), 2).ToString();
             //占比 此方法能得到你想要的小数点后位数
-
             labZhanBi.Text = string.Format("{0:0.00%}", (double.Parse(labTrueMoney.Text) / double.Parse(labMustMoney.Text)));//得到5.88%
 
+            //计划任务总额
             labPlantMoney.Text = mf.DS.PaperTask.Compute("Sum(TotalMoney)", "Year='" + year + "'").ToString();
+            //计划的差值
+            labPlantZZ.Text = (double.Parse(labPlantMoney.Text) - double.Parse(labTrueMoney.Text)).ToString();
+            //占比
             labHasMoneyBFB.Text = string.Format("{0:0.00%}", (double.Parse(labTrueMoney.Text) / double.Parse(labPlantMoney.Text))); ;
         }
         //实现查找谁多少了，少交了。
@@ -134,55 +141,80 @@ namespace DBzd
                         UnitID = u.UnitID,
                         Name = u.ShortName,
                         PlantMoney = p.TotalMoney
-                    } into ss
-                    from t in mf.DS.TruePaper.AsEnumerable()
-                    where t.UnitID == ss.UnitID && t.Year == year
+                    } into ss                 
+                    //应从收款表中找，并且要把多次交款的记录合并金额。
+                    from r in mf.DS.TruePaper.AsEnumerable()
+                    where r.UnitID == ss.UnitID && r.Year == year
+                    //from r in mf.DS.Receivables.AsEnumerable()
+                    //group r.TrueMoney by r.UnitID into rs 
+                    //where s
                     select new
                     {
                         unitID = ss.UnitID,
                         name = ss.Name,
                         plantMoney = ss.PlantMoney,
-                        trueMoney = t.TrueMoney
+                        trueMoney =r.TrueMoney
                     };
-
+            int xh = 1;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { "", i.name, i.plantMoney.ToString(), i.trueMoney.ToString(), (i.plantMoney - i.trueMoney).ToString() }, "");
+                //ListViewItem lv = new ListViewItem(new string[] { "", i.name, i.plantMoney.ToString(), i.trueMoney.ToString(), (i.plantMoney - i.trueMoney).ToString() }, "");
+                //lv.Tag = i.unitID;
+                //listView1.Items.Add(lv);
+                ListViewItem lv = new ListViewItem();
+                lv.SubItems[0].Text = (xh++).ToString();
+                lv.SubItems.Add(i.name);
+                lv.SubItems.Add(i.plantMoney.ToString());
+                lv.SubItems.Add(i.trueMoney.ToString());
+
+                if (i.plantMoney > (i.trueMoney+double.Parse(toolStripTextBox1.Text)))
+                {
+                    lv.BackColor = System.Drawing.Color.Red;
+                    lv.SubItems.Add((i.plantMoney - i.trueMoney).ToString());
+                    lv.SubItems.Add("");
+                }
+                if (i.trueMoney > (i.plantMoney + double.Parse(toolStripTextBox1.Text)))
+                {
+                    lv.SubItems.Add("");
+                    lv.BackColor = System.Drawing.Color.Green;
+                    lv.SubItems.Add((i.trueMoney - i.plantMoney).ToString());
+                    
+                }
+              
                 lv.Tag = i.unitID;
                 listView1.Items.Add(lv);
-
             }
 
             //第二步，加载交款总额。第三步比较
 
 
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                //单独判断人社局的子局
-                if (listView1.Items[i].Tag.ToString() == "130223j026")
-                {
-                    listView1.Items[i].SubItems[2].Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID like '%" + listView1.Items[i].Tag.ToString() + "%'").ToString();
-                }
-                else
-                {
-                    listView1.Items[i].SubItems[2].Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID= '" + listView1.Items[i].Tag.ToString() + "'").ToString();
+            //for (int i = 0; i < listView1.Items.Count; i++)
+            //{
+            //    //单独判断人社局的子局
+            //    if (listView1.Items[i].Tag.ToString() == "130223j026")
+            //    {
+            //        listView1.Items[i].SubItems[2].Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID like '%" + listView1.Items[i].Tag.ToString() + "%'").ToString();
+            //    }
+            //    else
+            //    {
+            //        listView1.Items[i].SubItems[2].Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID= '" + listView1.Items[i].Tag.ToString() + "'").ToString();
 
-                }
-                if (listView1.Items[i].SubItems[2].Text != "")
-                {
-                    double PM = Convert.ToDouble(listView1.Items[i].SubItems[1].Text);
-                    double TM = Convert.ToDouble(listView1.Items[i].SubItems[2].Text);
-                    if (PM > TM)
-                    {
-                        listView1.Items[i].SubItems[3].Text = (PM - TM).ToString("0.0");
+            //    }
+            //    if (listView1.Items[i].SubItems[2].Text != "")
+            //    {
+            //        double PM = Convert.ToDouble(listView1.Items[i].SubItems[1].Text);
+            //        double TM = Convert.ToDouble(listView1.Items[i].SubItems[2].Text);
+            //        if (PM > TM)
+            //        {
+            //            listView1.Items[i].SubItems[3].Text = (PM - TM).ToString("0.0");
 
-                    }
-                    if (TM > PM)
-                    {
-                        listView1.Items[i].SubItems[4].Text = (TM - PM).ToString("0.0");
-                    }
-                }
-            }
+            //        }
+            //        if (TM > PM)
+            //        {
+            //            listView1.Items[i].SubItems[4].Text = (TM - PM).ToString("0.0");
+            //        }
+            //    }
+            //}
         }
         //全部单位
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -287,8 +319,10 @@ namespace DBzd
                 }
                 //例外需要说明的是用strFileName,Excel.XlFileFormat.xlExcel9795保存方式时 当你的Excel版本不是95、97 而是2003、2007 时导出的时候会报一个错误：异常来自 HRESULT:0x800A03EC。 解决办法就是换成strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal。
                 xlBook.SaveAs(strFileName, Interop.Excel.XlFileFormat.xlWorkbookNormal, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                xlApp = null;
+                xlBook.Close(true, Type.Missing, Type.Missing);
                 xlBook = null;
+                xlApp.Quit();
+                xlApp = null;
                 MessageBox.Show("OK");
             }
         }

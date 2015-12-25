@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 using System.Drawing.Printing;
 using System.IO;
+using Interop.Excel;
 
 namespace DBzd
 {
@@ -47,9 +48,7 @@ namespace DBzd
                 toolStripComboBox1.Items.Add(it.year);
             }
             toolStripComboBox1.SelectedIndex = 0;
-            #endregion
-
-            
+            #endregion          
 
             LoadListviews();
             CalcHasPayUnit();
@@ -76,23 +75,20 @@ namespace DBzd
                          bz = r.BZ
 
                      };
+            int xh = 1;
             foreach (var i in q5)
             {
 
                 string namecode = PinYin.GetCodstring(i.shortname);
                 if (namecode.StartsWith(upper))
                 {
-                    ListViewItem lv = new ListViewItem(new string[] { "",i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
+                    ListViewItem lv = new ListViewItem(new string[] {(xh++).ToString(),i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
                     listView1.Items.Add(lv); ;
 
                 }
 
             }
-            //显示序号
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+            
 
         }
 
@@ -115,19 +111,16 @@ namespace DBzd
                         bz = r.BZ
 
                     };
+            int xh = 1;
             foreach (var i in q)
             {
 
 
-                ListViewItem lv = new ListViewItem(new string[] {"", i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
+                ListViewItem lv = new ListViewItem(new string[] {(xh++).ToString(), i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
                 listView1.Items.Add(lv); ;
 
             }
-            //显示序号
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+            
         }
         //现金
         private void ToolStripClick(object sender, EventArgs e)
@@ -148,19 +141,16 @@ namespace DBzd
                         year = r.Year,
                         bz = r.BZ
                     };
+            int xh = 1;
             foreach (var i in q)
             {
 
 
-                ListViewItem lv = new ListViewItem(new string[] {"", i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
+                ListViewItem lv = new ListViewItem(new string[] {(xh++).ToString(), i.shortname, i.paykind, i.money.ToString(), i.over, i.year, i.bz });
                 listView1.Items.Add(lv); ;
 
             }
-            //显示序号
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+           
         }
 
         //计算已交款单位。
@@ -188,7 +178,82 @@ namespace DBzd
             listView1.SelectedItems[0].BackColor = Color.Red;
         }
 
+        private void 导出ExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportToExecl();
+        }
 
+        private void ExportToExecl()
+        {
+
+            System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel 文件(*.xls)|*.xls";
+            sfd.DefaultExt = "xls";
+            //sfd.FileName = "未交款单位";
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                TurnToExcel(listView1, sfd.FileName);
+            }
+        }
+
+        //具体输出Excel2003文件
+        public void TurnToExcel(ListView listView, string strFileName)
+        {
+            int rowNum = listView.Items.Count;
+            int columnNum = listView.Items[0].SubItems.Count;
+            int rowIndex = 1;
+            int columnIndex = 0;
+            if (rowNum == 0 || string.IsNullOrEmpty(strFileName))
+            {
+                return;
+            }
+           
+            if (rowNum > 0)
+            {
+                Interop.Excel.Application xlApp = new Interop.Excel.Application();
+                
+                if (xlApp == null)
+                {
+                    MessageBox.Show("无法创建excel对象，可能您的系统没有安装excel");
+                    return;
+                }
+                xlApp.DefaultFilePath = "";
+                xlApp.DisplayAlerts = true;
+                xlApp.SheetsInNewWorkbook = 1;
+                Interop.Excel.Workbook xlBook = xlApp.Workbooks.Add(true);
+                //将ListView的列名导入Excel表第一行
+                foreach (ColumnHeader dc in listView.Columns)
+                {
+                    columnIndex++;
+                    xlApp.Cells[rowIndex, columnIndex] = dc.Text;
+                }
+                //将ListView中的数据导入Excel中
+                for (int i = 0; i < rowNum; i++)
+                {
+                    rowIndex++;
+                    columnIndex = 0;
+                    for (int j = 0; j < columnNum; j++)
+                    {
+                        columnIndex++;
+                        //注意这个在导出的时候加了“\t” 的目的就是避免导出的数据显示为科学计数法。可以放在每行的首尾。
+                        xlApp.Cells[rowIndex, columnIndex] = Convert.ToString(listView.Items[i].SubItems[j].Text);//+ "\t";
+                    }
+                }
+                //例外需要说明的是用strFileName,Excel.XlFileFormat.xlExcel9795保存方式时 当你的Excel版本不是95、97 而是2003、2007 时导出的时候会报一个错误：异常来自 HRESULT:0x800A03EC。 解决办法就是换成strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal。
+                xlBook.SaveAs(strFileName, Interop.Excel.XlFileFormat.xlWorkbookNormal, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                //xlApp = null;
+                //xlBook = null;
+
+                xlBook.Close(true, Type.Missing, Type.Missing);
+                xlBook = null;
+                xlApp.Quit();
+                xlApp = null;
+                MessageBox.Show("OK");
+            }
+            
+        }
 
     }
 }

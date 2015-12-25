@@ -69,8 +69,9 @@ namespace DBzd
 
         private void LoadUnit()
         {
+            string year = toolStripComboBox1.SelectedItem.ToString();
             var q = from p in mf.DS.Unit.AsEnumerable()
-                    where p.IsPay == "是"
+                    where p.IsPay == "是" &&p.Year==year
                     select p;
             foreach (var i in q)
             {
@@ -256,11 +257,11 @@ namespace DBzd
         //搜索单位
         private void tsTxtSearch_TextChanged(object sender, EventArgs e)
         {
-
+            string year=toolStripComboBox1.SelectedItem.ToString();
             combJKDW.Items.Clear();
             string upper = tsTxtSearch.Text.ToUpper();
             var q5 = from p in mf.DS.Unit.AsEnumerable()
-                     where p.Istake == "是"
+                     where p.IsPay == "是" && p.Year==year
                      select p;
             foreach (var i in q5)
             {

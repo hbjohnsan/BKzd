@@ -47,23 +47,21 @@ namespace DBzd
             string year = tscombYear.SelectedItem.ToString();
             var q = from p in mf.DS.Unit.AsEnumerable()
                     from ps in mf.DS.PaperTask.AsEnumerable()
-                    where p.UnitID ==ps.UnitId && ps.Year==year
-                    select new  {
-                       ID=ps.ID,
-                       ShortName=p.ShortName        
-        };
+                    where p.UnitID == ps.UnitId && ps.Year == year
+                    select new
+                    {
+                        ID = ps.ID,
+                        ShortName = p.ShortName
+                    };
+            int xh = 1;
             foreach (var i in q)
             {
 
-                ListViewItem lvi = new ListViewItem(new string[] { "", i.ShortName });
+                ListViewItem lvi = new ListViewItem(new string[] { (xh++).ToString(), i.ShortName });
                 lvi.Tag = i.ID;
                 listViewUnit.Items.Add(lvi);
             }
-            //显示序号
-            for (int i = 0; i < listViewUnit.Items.Count; i++)
-            {
-                listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            }
+
         }
 
 
@@ -125,7 +123,7 @@ namespace DBzd
             string year = tscombYear.SelectedItem.ToString();
             listViewUnit.Items.Clear();
             var q = from p in mf.DS.Unit.AsEnumerable()
-                    where p.Istake == "是"&& p.Year==year
+                    where p.Istake == "是" && p.Year == year
                     select p;
             foreach (var i in q)
             {
@@ -139,11 +137,7 @@ namespace DBzd
             }
 
 
-            //显示序号
-            //for (int i = 0; i < listViewUnit.Items.Count; i++)
-            //{
-            //    listViewUnit.Items[i].SubItems[0].Text = (i + 1).ToString();
-            //}
+           
         }
         //年度下拉列表
         private void tscombYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -244,7 +238,7 @@ namespace DBzd
             {
                 listViewUnit.SelectedItems[0].BackColor = Color.Red;
                 #region 显示报刊数量
-                int id =int.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
+                int id = int.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
                 string unitid = mf.DS.Unit.FindByID(id).UnitID;
                 string year = tscombYear.SelectedItem.ToString().Trim();
                 //判断该单位是不是已经分配了任务，如果是从复制上年度的规则中分配的，那么就显示如下，如果不是，那么所有报刊数据应为0
@@ -442,17 +436,17 @@ namespace DBzd
         }
         #endregion
 
-       //保存变动的任务量
+        //保存变动的任务量
         private void btnEditTask_Click(object sender, EventArgs e)
         {
-            int ID=Int32.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
+            int ID = Int32.Parse(listViewUnit.SelectedItems[0].Tag.ToString());
             string unitid = mf.DS.PaperTask.FindByID(ID).UnitId;
             string year = tscombYear.SelectedItem.ToString().Trim();
 
             if (mf.DS.PaperTask.Select("Year='" + year + "' and UnitID='" + unitid + "'").Count() > 0)
             {
                 //(from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
-                BKDataSet.PaperTaskRow pr =  (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
+                BKDataSet.PaperTaskRow pr = (from p in mf.DS.PaperTask.AsEnumerable() where p.Year == year && p.UnitId == labUnitID.Text select p).SingleOrDefault();
                 pr.P101 = Convert.ToInt32(nUD101.Value);
                 pr.P102 = Convert.ToInt32(nUD102.Value);
                 pr.P103 = Convert.ToInt32(nUD103.Value);
