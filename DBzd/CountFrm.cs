@@ -47,14 +47,9 @@ namespace DBzd
             toolStripComboBox1.SelectedIndex = 0;
             #endregion
 
-
-
             TotalMoney();
-
-
             //加载未交款单位列表
             LoadListViewNoMoney();
-
             LoadListView();
 
         }
@@ -141,80 +136,41 @@ namespace DBzd
                         UnitID = u.UnitID,
                         Name = u.ShortName,
                         PlantMoney = p.TotalMoney
-                    } into ss                 
-                    //应从收款表中找，并且要把多次交款的记录合并金额。
-                    from r in mf.DS.TruePaper.AsEnumerable()
-                    where r.UnitID == ss.UnitID && r.Year == year
-                    //from r in mf.DS.Receivables.AsEnumerable()
-                    //group r.TrueMoney by r.UnitID into rs 
-                    //where s
-                    select new
-                    {
-                        unitID = ss.UnitID,
-                        name = ss.Name,
-                        plantMoney = ss.PlantMoney,
-                        trueMoney =r.TrueMoney
-                    };
+                       
+                    }; 
             int xh = 1;
             foreach (var i in q)
             {
-                //ListViewItem lv = new ListViewItem(new string[] { "", i.name, i.plantMoney.ToString(), i.trueMoney.ToString(), (i.plantMoney - i.trueMoney).ToString() }, "");
-                //lv.Tag = i.unitID;
-                //listView1.Items.Add(lv);
-                ListViewItem lv = new ListViewItem();
-                lv.SubItems[0].Text = (xh++).ToString();
-                lv.SubItems.Add(i.name);
-                lv.SubItems.Add(i.plantMoney.ToString());
-                lv.SubItems.Add(i.trueMoney.ToString());
-
-                if (i.plantMoney > (i.trueMoney+double.Parse(toolStripTextBox1.Text)))
-                {
-                    lv.BackColor = System.Drawing.Color.Red;
-                    lv.SubItems.Add((i.plantMoney - i.trueMoney).ToString());
-                    lv.SubItems.Add("");
-                }
-                if (i.trueMoney > (i.plantMoney + double.Parse(toolStripTextBox1.Text)))
-                {
-                    lv.SubItems.Add("");
-                    lv.BackColor = System.Drawing.Color.Green;
-                    lv.SubItems.Add((i.trueMoney - i.plantMoney).ToString());
-                    
-                }
-              
-                lv.Tag = i.unitID;
+                ListViewItem lv = new ListViewItem(new string[] { (xh++).ToString(), i.Name, i.PlantMoney.ToString(),(mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID = '" + i.UnitID + "'").ToString()), "",""});
+                lv.Tag = i.UnitID;
                 listView1.Items.Add(lv);
             }
 
             //第二步，加载交款总额。第三步比较
 
+            CalCAZHI();
+        }
 
-            //for (int i = 0; i < listView1.Items.Count; i++)
-            //{
-            //    //单独判断人社局的子局
-            //    if (listView1.Items[i].Tag.ToString() == "130223j026")
-            //    {
-            //        listView1.Items[i].SubItems[2].Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID like '%" + listView1.Items[i].Tag.ToString() + "%'").ToString();
-            //    }
-            //    else
-            //    {
-            //        listView1.Items[i].SubItems[2].Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "' and UnitID= '" + listView1.Items[i].Tag.ToString() + "'").ToString();
+        private void CalCAZHI()
+        {
+            //需要计算 事务局  教育局 的社局的总数
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                if (listView1.Items[i].SubItems[3].Text != "")
+                {
+                    double PM = Convert.ToDouble(listView1.Items[i].SubItems[2].Text);
+                    double TM = Convert.ToDouble(listView1.Items[i].SubItems[3].Text);
+                    if (PM > TM)
+                    {
+                        listView1.Items[i].SubItems[4].Text = (PM - TM).ToString("0.0");
 
-            //    }
-            //    if (listView1.Items[i].SubItems[2].Text != "")
-            //    {
-            //        double PM = Convert.ToDouble(listView1.Items[i].SubItems[1].Text);
-            //        double TM = Convert.ToDouble(listView1.Items[i].SubItems[2].Text);
-            //        if (PM > TM)
-            //        {
-            //            listView1.Items[i].SubItems[3].Text = (PM - TM).ToString("0.0");
-
-            //        }
-            //        if (TM > PM)
-            //        {
-            //            listView1.Items[i].SubItems[4].Text = (TM - PM).ToString("0.0");
-            //        }
-            //    }
-            //}
+                    }
+                    if (TM > PM)
+                    {
+                        listView1.Items[i].SubItems[5].Text = (TM - PM).ToString("0.0");
+                    }
+                }
+            }
         }
         //全部单位
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -255,12 +211,6 @@ namespace DBzd
         //未交款表导出Excle
         private void 导出ExcleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExportToExecl();
-        }
-
-        private void ExportToExecl()
-        {
-
             System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel 文件(*.xls)|*.xls";
             sfd.DefaultExt = "xls";
@@ -272,6 +222,8 @@ namespace DBzd
                 TurnToExcel(listViewNoMoney, sfd.FileName);
             }
         }
+
+        
 
         //具体输出Excel2003文件
         public void TurnToExcel(ListView listView, string strFileName)
@@ -314,7 +266,7 @@ namespace DBzd
                     {
                         columnIndex++;
                         //注意这个在导出的时候加了“\t” 的目的就是避免导出的数据显示为科学计数法。可以放在每行的首尾。
-                        xlApp.Cells[rowIndex, columnIndex] = Convert.ToString(listView.Items[i].SubItems[j].Text) + "\t";
+                        xlApp.Cells[rowIndex, columnIndex] = Convert.ToString(listView.Items[i].SubItems[j].Text);// +"\t";
                     }
                 }
                 //例外需要说明的是用strFileName,Excel.XlFileFormat.xlExcel9795保存方式时 当你的Excel版本不是95、97 而是2003、2007 时导出的时候会报一个错误：异常来自 HRESULT:0x800A03EC。 解决办法就是换成strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal。
@@ -341,6 +293,20 @@ namespace DBzd
         {
 
 
+        }
+        //导出全部单位的Excel文件
+        private void 导出ExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel 文件(*.xls)|*.xls";
+            sfd.DefaultExt = "xls";
+            sfd.FileName = "全部单位交款司";
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                TurnToExcel(listView1, sfd.FileName);
+            }
         }
     }
 }

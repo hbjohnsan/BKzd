@@ -79,6 +79,8 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labPlantZZ = new System.Windows.Forms.Label();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.导出ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -86,6 +88,7 @@
             this.groupBox4.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -188,6 +191,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip2;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
@@ -514,6 +518,20 @@
             this.labPlantZZ.TabIndex = 13;
             this.labPlantZZ.Text = "labPlantZZ";
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.导出ExcelToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 48);
+            // 
+            // 导出ExcelToolStripMenuItem
+            // 
+            this.导出ExcelToolStripMenuItem.Name = "导出ExcelToolStripMenuItem";
+            this.导出ExcelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.导出ExcelToolStripMenuItem.Text = "导出Excel";
+            this.导出ExcelToolStripMenuItem.Click += new System.EventHandler(this.导出ExcelToolStripMenuItem_Click);
+            // 
             // CountFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -540,6 +558,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,5 +615,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labPlantZZ;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem 导出ExcelToolStripMenuItem;
     }
 }
