@@ -56,13 +56,7 @@ E:\DBzd\DBzd\obj\x86\Debug\DBzd.MoneyCountFrm.resources
 E:\DBzd\DBzd\obj\x86\Debug\DBzd.ToolsPaperNum.resources
 E:\DBzd\DBzd\obj\x86\Debug\DBzd.CountFrm.resources
 E:\DBzd\DBzd\obj\x86\Debug\DBzd.BankFrm.resources
-E:\DBzd\DBzd\bin\Debug\EntityFramework.dll
-E:\DBzd\DBzd\bin\Debug\EntityFramework.SqlServer.dll
 E:\DBzd\DBzd\bin\Debug\System.Data.SQLite.dll
-E:\DBzd\DBzd\bin\Debug\System.Data.SQLite.EF6.dll
-E:\DBzd\DBzd\bin\Debug\System.Data.SQLite.Linq.dll
-E:\DBzd\DBzd\bin\Debug\EntityFramework.xml
-E:\DBzd\DBzd\bin\Debug\EntityFramework.SqlServer.xml
 E:\DBzd\DBzd\bin\Debug\System.Data.SQLite.xml
 E:\DBzd\DBzd\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\DBzd\DBzd\obj\x86\Debug\GenerateResource.read.1.tlog
