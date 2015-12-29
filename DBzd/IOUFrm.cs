@@ -99,9 +99,9 @@ namespace DBzd
             rtbDoc.Text += "\n                         打欠条人：" + "               ";
             rtbDoc.Text += "\n                         电    话：" ;
             rtbDoc.Text += "\n                         日    期：" + System.DateTime.Now.ToString("yyyy年MM月dd日");
-            rtbDoc.Text += "\n\n\n";
-            rtbDoc.Text += "---------------------------------------------------------\n\n\n\n\n";
-            rtbDoc.Text += "           " + toolStripComboBox1.Text + "年度" + u.AllName + "订阅党报明细\n\n\n";
+            rtbDoc.Text += "\n\n";
+            rtbDoc.Text += "---------------------------------------------------------\n\n";
+            rtbDoc.Text += "           " + toolStripComboBox1.Text + "年度" + u.AllName + "订阅党报明细\n\n";
 
             //如果有真实任务表中有记录，那么就显示真实的记录。否则显示计划任务数及金额。
             if (mf.DS.TruePaper.Select("Year='" + year + "' and UnitID='" + u.UnitID + "'").Count() > 0)
@@ -115,7 +115,7 @@ namespace DBzd
                 rtbDoc.Text += "光 明 日 报 :" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P103"].ToString() + "份；\t";
                 rtbDoc.Text += "单价：" + mf.DS.Paper.Select("PaperID='103' and Year='" + year + "'")[0]["Price"].ToString() + "元，\t\t";
                 rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='103' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
-                rtbDoc.Text += "求       是 :" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P104"].ToString() + "份；\t";
+                rtbDoc.Text += "经 济 日 报 :" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P104"].ToString() + "份；\t";
                 rtbDoc.Text += "单价：" + mf.DS.Paper.Select("PaperID='104' and Year='" + year + "'")[0]["Price"].ToString() + "元，\t\t";
                 rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='104' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
                 rtbDoc.Text += "新华每日电讯:" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P105"].ToString() + "份；\t";
@@ -135,8 +135,16 @@ namespace DBzd
                 rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='301' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
                 rtbDoc.Text += "唐 山 晚 报 :" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P302"].ToString() + "份；\t";
                 rtbDoc.Text += "单价：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["Price"].ToString() + "元，\t\t";
-                rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n\n\n";
-                rtbDoc.Text += "                       总 计 金 额 ：" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["TrueMoney"].ToString() + "元";
+                rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+                rtbDoc.Text += "                       总 计 金 额 ：" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["TrueMoney"].ToString() + "元。\n\n";
+                rtbDoc.Text += "对公帐户\n";
+                rtbDoc.Text += "名称：中国邮政集团公司河北省滦县分公司\n";
+                rtbDoc.Text += "帐号：91300501000360889020200\n";
+                rtbDoc.Text += "开户行：中国邮政储蓄银行股份有限公司滦县支行\n";
+                rtbDoc.Text += "个人帐户\n";
+                rtbDoc.Text += "户名：宋庆军\n";
+                rtbDoc.Text += "帐号：6217981240000212463\n";
+                rtbDoc.Text += "开户行：中国邮政储蓄银行滦县支行";
             }
             else
             {
@@ -169,8 +177,16 @@ namespace DBzd
                 rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='301' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
                 rtbDoc.Text += "唐 山 晚 报 :" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["P302"].ToString() + "份；\t";
                 rtbDoc.Text += "单价：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["Price"].ToString() + "元，\t\t";
-                rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n\n\n";
-                rtbDoc.Text += "                       总 计 金 额 ：" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["TotalMoney"].ToString() + "份；\t";
+                rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
+                rtbDoc.Text += "                       总 计 金 额 ：" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["TotalMoney"].ToString() + "份；\n\n";
+                rtbDoc.Text += "对公帐户\n";
+                rtbDoc.Text += "名称：中国邮政集团公司河北省滦县分公司\n";
+                rtbDoc.Text += "帐号：91300501000360889020200\n";
+                rtbDoc.Text += "开户行：中国邮政储蓄银行股份有限公司滦县支行\n";
+                rtbDoc.Text += "个人帐户\n";
+                rtbDoc.Text += "户名：宋庆军\n";
+                rtbDoc.Text += "帐号：6217981240000212463\n";
+                rtbDoc.Text += "开户行：中国邮政储蓄银行滦县支行";
             }
         }
         #endregion
