@@ -138,9 +138,10 @@ namespace DBzd
                 rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
                 rtbDoc.Text += "                       总 计 金 额 ：" + mf.DS.TruePaper.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["TrueMoney"].ToString() + "元。\n\n";
                 rtbDoc.Text += "对公帐户\n";
-                rtbDoc.Text += "名称：中国邮政集团公司河北省滦县分公司\n";
+                rtbDoc.Text += "户名：报刊资金\n";
                 rtbDoc.Text += "帐号：91300501000360889020200\n";
-                rtbDoc.Text += "开户行：中国邮政储蓄银行股份有限公司滦县支行\n";
+                rtbDoc.Text += "开户行：中国邮政储蓄银行滦县支行\n";
+                rtbDoc.Text += "（请按实际金额打款，不要多次打款或多项金额合计一次打款）\n";
                 rtbDoc.Text += "个人帐户\n";
                 rtbDoc.Text += "户名：宋庆军\n";
                 rtbDoc.Text += "帐号：6217981240000212463\n";
@@ -180,9 +181,10 @@ namespace DBzd
                 rtbDoc.Text += "补贴：" + mf.DS.Paper.Select("PaperID='302' and Year='" + year + "'")[0]["SubSidy"].ToString().ToString() + "元。\n";
                 rtbDoc.Text += "                       总 计 金 额 ：" + mf.DS.PaperTask.Select("UnitID='" + u.UnitID + "'and Year='" + year + "'")[0]["TotalMoney"].ToString() + "份；\n\n";
                 rtbDoc.Text += "对公帐户\n";
-                rtbDoc.Text += "名称：中国邮政集团公司河北省滦县分公司\n";
+                rtbDoc.Text += "户名：报刊资金\n";
                 rtbDoc.Text += "帐号：91300501000360889020200\n";
-                rtbDoc.Text += "开户行：中国邮政储蓄银行股份有限公司滦县支行\n";
+                rtbDoc.Text += "开户行：中国邮政储蓄银行滦县支行\n";
+                rtbDoc.Text += "（请按实际金额打款，不要多次打款或多项金额合计一次打款）\n";
                 rtbDoc.Text += "个人帐户\n";
                 rtbDoc.Text += "户名：宋庆军\n";
                 rtbDoc.Text += "帐号：6217981240000212463\n";

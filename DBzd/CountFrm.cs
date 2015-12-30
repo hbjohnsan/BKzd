@@ -48,12 +48,12 @@ namespace DBzd
             #endregion
 
             TotalMoney();
-            //加载未交款单位列表
+            //未交款单位列表
             LoadListViewNoMoney();
             LoadListView();
 
         }
-        //加载未交款单位列表       
+        //未交款单位列表       
         private void LoadListViewNoMoney()
         {
             //加载单位基本信息
@@ -70,7 +70,7 @@ namespace DBzd
             int xh = 1;
             foreach (var i in notIn)
             {
-                ListViewItem lv = new ListViewItem(new string[] {(xh++).ToString(), i.ShortName, i.Tel, "", "未交款" });
+                ListViewItem lv = new ListViewItem(new string[] {(xh++).ToString(), i.ShortName, i.Tel, "", "未交" });
                 lv.Tag = i.UnitID;
                 listViewNoMoney.Items.Add(lv);
 
@@ -95,6 +95,25 @@ namespace DBzd
                     listViewNoMoney.Items[i].SubItems[3].Text = mf.DS.TruePaper.Select("Year='" + year + "' and UnitID='" + unitid + "'")[0]["TrueMoney"].ToString();
                 }
             }
+            //把标示为未交款的单位且，存到库的单位显示出来。
+            var NoPay = from p in mf.DS.Receivables.AsEnumerable()
+                        from t in mf.DS.Unit.AsEnumerable()
+                        where p.PayKind == "未交" && p.Year == year && p.UnitID == t.UnitID
+                        select new { 
+                            UnitID=p.UnitID,
+                            Name=t.ShortName,
+                            Tel=t.Tel,
+                            Money=p.TrueMoney
+
+                        };
+            int xh2 = 1;
+            foreach (var i in NoPay)
+            {
+                ListViewItem lv = new ListViewItem(new string[] { (xh2++).ToString(), i.Name, i.Tel, i.Money.ToString(), "未交" });
+                lv.Tag = i.UnitID;
+                listViewNoMoney.Items.Add(lv);
+            }
+
 
         }
         //显示综合统计
@@ -109,7 +128,7 @@ namespace DBzd
             labMustMoney.Text = (double.Parse(labTopGitMoney.Text) - double.Parse(labCaiZPT.Text)).ToString();
 
             //真实交款金额，包含欠条也算完成
-            labTrueMoney.Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + year + "'").ToString();
+            labTrueMoney.Text = mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind <>'未交' and Year='" + year + "'").ToString();
             //未完成任务金额
             labNoGieMoney.Text = Math.Round((double.Parse(labMustMoney.Text) - double.Parse(labTrueMoney.Text)), 2).ToString();
             //占比 此方法能得到你想要的小数点后位数
@@ -118,7 +137,7 @@ namespace DBzd
             //计划任务总额
             labPlantMoney.Text = mf.DS.PaperTask.Compute("Sum(TotalMoney)", "Year='" + year + "'").ToString();
             //计划的差值
-            labPlantZZ.Text = (double.Parse(labPlantMoney.Text) - double.Parse(labTrueMoney.Text)).ToString();
+            labPlantZZ.Text = Math.Round((double.Parse(labPlantMoney.Text) - double.Parse(labTrueMoney.Text)),2).ToString();
             //占比
             labHasMoneyBFB.Text = string.Format("{0:0.00%}", (double.Parse(labTrueMoney.Text) / double.Parse(labPlantMoney.Text))); ;
         }

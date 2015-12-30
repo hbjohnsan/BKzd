@@ -156,26 +156,31 @@ namespace DBzd
         //计算已交款单位。
         private void CalcHasPayUnit()
         {
+            string year=toolStripComboBox1.SelectedItem.ToString() ;
             mf.toolStripStatusLabel1.Text = "";
             mf.toolStripStatusLabel2.Text = "";
             //总单位数：
 
-            mf.toolStripStatusLabel1.Text += "现金总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='现金' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+            mf.toolStripStatusLabel1.Text += "现金总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='现金' and Year='" + year + "'").ToString() + "元";
 
-            mf.toolStripStatusLabel1.Text += "    汇卡总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='汇卡' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+            mf.toolStripStatusLabel1.Text += "    汇卡总额：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='汇卡' and Year='" + year + "'").ToString() + "元";
 
-            mf.toolStripStatusLabel1.Text += "    汇邮局账户：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='转账' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+            mf.toolStripStatusLabel1.Text += "    汇邮局账户：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='转账' and Year='" + year + "'").ToString() + "元";
 
-            mf.toolStripStatusLabel1.Text += "    欠条：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='欠条' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+            mf.toolStripStatusLabel1.Text += "    欠条：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='欠条' and Year='" + year + "'").ToString() + "元";
 
             //mf.toolStripStatusLabel1.Text += "    未交：" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind='未交' and Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
 
-            mf.toolStripStatusLabel2.Text += "合计各类总额:" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "Year='" + toolStripComboBox1.SelectedItem.ToString() + "'").ToString() + "元";
+            mf.toolStripStatusLabel2.Text += "合计各类总额:" + mf.DS.Receivables.Compute("Sum(TrueMoney)", "PayKind <>'未交' and Year='" + year + "'").ToString() + "元";
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listView1.SelectedItems[0].BackColor = Color.Red;
+            if (listView1.SelectedItems.Count>0)
+            {
+                listView1.SelectedItems[0].BackColor = Color.Red;
+            }
+            
         }
 
         private void 导出ExcelToolStripMenuItem_Click(object sender, EventArgs e)
